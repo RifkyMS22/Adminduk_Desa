@@ -21,13 +21,42 @@ class DataPendudukController extends Controller
 
     public function store(Request $request)
     {
-    // Validasi input jika diperlukan
-    $data_penduduk = new datapenduduk();
-    $data_penduduk->nama = $request->input('nama');
-    // Tambahkan atribut lain sesuai kebutuhan
-    $layanan->save();
+        // Validasi input jika diperlukan
+        $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'tmpt_tgl_lahir' => 'required',
+            'nama_ayah' => 'required',
+            'nama_ibu' => 'required',
+            'agama' => 'required',
+            'pekerjaan' => 'required',
+            'pendidikan' => 'required',
+            'jenis_kelamin' => 'required',
+            'status_perkawinan' => 'required',
+            'stts_hub_keluarga' => 'required',
+            'kewarganegaraan' => 'required',
+            // Tambahkan validasi untuk atribut lain jika diperlukan
+        ]);
 
-    return redirect()->route('index')->with('success', 'Data layanan berhasil disimpan.');
+        // Simpan data penduduk ke database
+        $dataPenduduk = new DataPenduduk();
+        $dataPenduduk->nik = $request->input('nik');
+        $dataPenduduk->nama = $request->input('nama');
+        $dataPenduduk->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+        $dataPenduduk->nama_ayah = $request->input('nama_ayah');
+        $dataPenduduk->nama_ibu = $request->input('nama_ibu');
+        $dataPenduduk->agama = $request->input('agama');
+        $dataPenduduk->pekerjaan = $request->input('pekerjaan');
+        $dataPenduduk->pendidikan = $request->input('pendidikan');
+        $dataPenduduk->jenis_kelamin = $request->input('jenis_kelamin');
+        $dataPenduduk->status_perkawinan = $request->input('status_perkawinan');
+        $dataPenduduk->stts_hub_keluarga = $request->input('stts_hub_keluarga');
+        $dataPenduduk->kewarganegaraan = $request->input('kewarganegaraan');
+// Setel atribut lain sesuai kebutuhan
+        $dataPenduduk->save();
+
+
+        return redirect()->route('index')->with('success', 'Data penduduk berhasil disimpan.');
     }
     
     
