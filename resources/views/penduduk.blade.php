@@ -19,12 +19,13 @@
                     <th>Status Perkawinan</th>
                     <th>Status Hubungan Keluarga</th>
                     <th>Kewarganegaraan</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($dataPenduduk as $penduduk)
                     <tr>
-                        <td>{{ $penduduk->NIK }}</td>
+                        <td>{{ $penduduk->nik }}</td>
                         <td>{{ $penduduk->nama}}</td>
                         <td>{{ $penduduk->tmpt_tgl_lahir }}</td>
                         <td>{{ $penduduk->nama_ayah }}</td>
@@ -36,11 +37,13 @@
                         <td>{{ $penduduk->status_perkawinan }}</td>
                         <td>{{ $penduduk->stts_hub_keluarga }}</td>
                         <td>{{ $penduduk->kewarganegaraan }}</td>
-                    </tr>
                 @endforeach
 
                 <div class="btn-group">
-                    <a href="/datapenduduk/creatependuduk" class="btn btn-primary active" aria-current="page">Tambah</a>
+                    <a href="/creatependuduk" class="btn btn-primary active" aria-current="page">Tambah</a>
+                </div>
+                <div class="btn-group ms-3">
+                    <a href="/editpenduduk" class="btn btn-primary active" aria-current="page">Edit</a>
                 </div>
 
             </tbody>

@@ -3,16 +3,17 @@
 @section('container')
 
 <div class="container">
-    <h2>Tambah Data Penduduk</h2>
-    <form method="POST" action="{{ route('datapenduduk.store') }}">
+    <h2>Edit Data Penduduk</h2>
+    <form method="POST" action="{{ route('datapenduduk.update', $dataPenduduk->nik) }}">
         @csrf
+        @method('PUT')
         <div class="mb-3">
             <label for="nik" class="form-label">NIK</label>
-            <input type="text" class="form-control" id="nik" name="nik" placeholder="Masukkan NIK">
+            <input type="text" class="form-control" id="nik" name="nik" value="{{ $dataPenduduk->nik }}">
         </div>
         <div class="mb-3">
             <label for="nama" class="form-label">Nama Lengkap</label>
-            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Lengkap">
+            <input type="text" class="form-control" id="nama" name="nama" value="{{ $dataPenduduk->nama }}">
         </div>
         <div class="mb-3">
             <label for="tmpt_tgl_lahir" class="form-label">Tempat Tanggal Lahir</label>
@@ -54,7 +55,8 @@
             <label for="kewarganegaraan" class="form-label">Kewarganegaraan</label>
             <input type="text" class="form-control" id="kewarganegaraan" name="kewarganegaraan" placeholder="Masukkan Kewarganegaraan">
         </div>
-        <input type="submit" name="submit" class="btn btn-primary" value="SIMPAN">
+        <!-- Tambahkan atribut lain sesuai kebutuhan -->
+        <input type="submit" name="submit" class="btn btn-primary" value="Update">
     </form>
 </div>
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Penduduk;
+use App\Models\DataPenduduk;
 use Illuminate\Http\Request;
 
 class DashboardPendudukController extends Controller
@@ -12,7 +12,7 @@ class DashboardPendudukController extends Controller
      */
     public function index()
     {
-        return 'ini halaman';
+        return view ('dashboard.penduduk.index');
     }
 
     /**

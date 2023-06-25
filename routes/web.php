@@ -24,9 +24,6 @@ use App\Http\Controllers\DashboardPendudukController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/coba', function () {
-    return view('coba');
-});
 
 Route::get('/datapenduduk', [DataPendudukController::class, 'index']);
 
@@ -34,22 +31,14 @@ Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/layanan', [LayananController::class, 'index']);
 
-Route::get('/creatependuduk', [CreatePendudukController::class, 'index']);
-Route::get('/datapenduduk/creatependuduk', [DataPendudukController::class, 'create']);
+Route::get('/datapenduduk/creatependuduk', [DataPendudukController::class, 'store']);
+Route::get('/creatependuduk', [DataPendudukController::class, 'create']);
+Route::get('/editpenduduk', [DataPendudukController::class, 'edit']);
 Route::get('/datapenduduk/creatependuduk', 'DataPendudukController@create')->name('datapenduduk.creatependuduk');
-Route::post('/datapenduduk', 'DataPendudukController@store')->name('datapenduduk.store');
+Route::get('datapenduduk/{nik}/edit', 'DataPendudukController@edit')->name('datapenduduk.edit');
 
-Route::get('/datapenduduk', [DataPendudukController::class, 'index'])->name('index');
-Route::get('/datapenduduk/create', [DataPendudukController::class, 'create'])->name('datapenduduk.create');
-Route::post('/datapenduduk', [DataPendudukController::class, 'store'])->name('datapenduduk.store');
-
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::get('/dashboard/index', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', function(){
+    return view ('dashboard.index');
+    });
 
 Route::resource('/dashboard/penduduk', DashboardPendudukController::class);
-
-Route::get('/tambahwarga', 'DataController@create')->name('data.create');
-
-// Route::get('/profile', 'ProfileController@index')->name('profile');
