@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Penduduk extends Model
 {
     use HasFactory;
+    protected $table = 'data_penduduk';
+    protected $primaryKey = 'nik';
+
+
 }

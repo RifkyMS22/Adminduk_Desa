@@ -17,7 +17,7 @@ class DataPendudukController extends Controller
 
     public function create()
     {
-        return view('/datapenduduk/creatependuduk');
+        return view('dashboard.penduduk.create');
     }
 
     public function store(Request $request)

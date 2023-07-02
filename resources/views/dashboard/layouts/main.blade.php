@@ -8,11 +8,12 @@
     <title>Dashboard Adminduk</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- Custom styles for this template -->
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    {{-- <link href="css/dashboard.css" rel="stylesheet"> --}}
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet" type="text/css" >
   </head>
   <body>
 
@@ -65,6 +66,9 @@
   <symbol id="search" viewBox="0 0 16 16">
     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
   </symbol>
+  <symbol id="eye" viewBox="0 0 16 16">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+  </symbol>
 </svg>
 
 @include('dashboard.layouts.header')
@@ -82,5 +86,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js" integrity="sha384-gdQErvCNWvHQZj6XZM0dNsAoY4v+j5P1XDpNkcM3HJG1Yx04ecqIHk7+4VBOCHOG" crossorigin="anonymous"></script>
-    <script src="/css/dashboard.js"></script></body>
+    {{-- <script src="/js/dashboard.js"></script> --}}
+    <script type="text/javascript" src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  
+</body>
+
 </html>

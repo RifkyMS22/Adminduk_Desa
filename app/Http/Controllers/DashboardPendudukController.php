@@ -2,64 +2,75 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penduduk;
 use App\Models\DataPenduduk;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class DashboardPendudukController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return view ('dashboard.penduduk.index');
+        $dataPenduduk = DataPenduduk::latest('updated_at')->paginate(5);
+        return view('dashboard.penduduk.index', ['dataPenduduk' => $dataPenduduk]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('dashboard.penduduk.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nik' => 'required',
+            'no_kk' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+        ]);
+    
+        DataPenduduk::create($validatedData);
+    
+        return redirect()->route('dashboard.penduduk.index')->with('success', 'Data penduduk berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
+   
     public function show(Penduduk $penduduk)
     {
-        //
+       // 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(Penduduk $penduduk)
     {
-        //
+        $dataPenduduk = DataPenduduk::findOrFail($penduduk->nik);
+    
+        return view('dashboard.penduduk.edit', ['dataPenduduk' => $dataPenduduk]);
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Penduduk $penduduk)
     {
-        //
+        $validatedData = $request->validate([
+            'nik' => 'required',
+            'no_kk' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+        ]);
+    
+        $dataPenduduk = DataPenduduk::findOrFail($penduduk->nik);
+        $dataPenduduk->update($validatedData);
+    
+        return redirect()->route('dashboard.penduduk.index')->with('success', 'Data penduduk berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Penduduk $penduduk)
     {
-        //
+
+        $dataPenduduk = DataPenduduk::findOrFail($penduduk->nik);
+        $dataPenduduk->delete();
+        return redirect()->route('dashboard.penduduk.index')->with('success', 'Data penduduk berhasil dihapus');
     }
 }
