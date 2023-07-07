@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\CreatePendudukController;
+use App\Http\Controllers\KeteranganUmumController;
 use App\Http\Controllers\DashboardPendudukController;
 
 
@@ -44,3 +45,7 @@ Route::put('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class
 Route::delete('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
 Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 
+Route::get('/dashboard/ket_umum', [KeteranganUmumController::class, 'index'])->name('dashboard.ket_umum.index');
+Route::get('/ket.domisili', function () {
+    return view('dashboard.administrasi.ket_domisili');
+});
