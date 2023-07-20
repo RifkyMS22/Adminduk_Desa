@@ -56,6 +56,10 @@ Route::resource('/dashboard/df_surat_domisili', DashboardDomisiliController::cla
 Route::post('/dashboard/administrasi', [DashboardDomisiliController::class, 'store'])->name('dashboard.administrasi.store');
 Route::get('/dashboard/domisili', [DashboardDomisiliController::class, 'index'])->name('dashboard.administrasi.index');
 Route::get('/dashboard/create_domisili', [DashboardDomisiliController::class, 'create'])->name('dashboard.administrasi.create');
+Route::get('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliController::class, 'edit'])->name('dashboard.administrasi.edit');
+Route::post('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliController::class, 'edit'])->name('dashboard.administrasi.edit');
+Route::put('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'update'])->name('dashboard.administrasi.update');
+Route::delete('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
 
 
 Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);

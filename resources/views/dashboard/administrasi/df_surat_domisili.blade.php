@@ -22,19 +22,42 @@
             <th scope="col">Alamat</th>
             <th scope="col">Pekerjaan</th>
             <th scope="col">No Surat</th>
+            <th scope="col">Keperluan</th>
+            <th scope="col">Aksi</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($domisili as $domisili)
             <tr>
+                <td>{{ $domisili->nama}}</td>
                 <td>{{ $domisili->nik }}</td>
                 <td>{{ $domisili->no_kk }}</td>
-                <td>{{ $domisili->nama}}</td>
-                {{-- <td>{{ $domisili->alamat}}</td>
-                <td>{{ $domisili->rt}}</td>
-                <td>{{ $domisili->rw}}</td> --}}
+                <td>{{ $domisili->binti}}</td>
+                <td>{{ $domisili->tmpt_tgl_lahir}}</td>
+                <td>{{ $domisili->agama}}</td>
+                <td>{{ $domisili->jenis_kelamin }}</td>
+                <td>{{ $domisili->warganegara}}</td>
+                <td>{{ $domisili->alamat}}</td>
+                <td>{{ $domisili->pekerjaan}}</td>
+                <td>{{ $domisili->no_surat}}</td>
+                <td>{{ $domisili->keperluan}}</td>
+                <td>
+                    <a href="{{ route('dashboard.administrasi.edit', ['domisili' => $domisili->nama]) }}" class="badge bg-warning">
+                      <i data-feather="edit"></i>
+                    </a>
+                    <a href="{{ route('dashboard.administrasi.destroy', ['domisili' => $domisili->nama]) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
+                      <i data-feather="x-circle"></i>
+                    </a>
+                    <form id="delete-form" action="{{ route('dashboard.administrasi.destroy', ['domisili' => $domisili->nama]) }}" method="POST" style="display: none;">
+                      @csrf
+                      @method('DELETE')
+                    </form> 
+                  </td>
             </tr>
             @endforeach
+            <script>
+                feather.replace()
+            </script>
         </tbody>
     </table>
 </div>

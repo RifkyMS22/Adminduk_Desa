@@ -9,7 +9,7 @@ class Domisili extends Model
 {
     use HasFactory;
     protected $table = 'ket_domisili';
-    protected $primaryKey = 'nama';
+    // protected $primaryKey = 'nama';
 
 
     protected $fillable = [
