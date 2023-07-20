@@ -27,9 +27,10 @@
             ADMINISTRASI UMUM
           </a>
           <ul class="dropdown-menu" aria-labelledby="sidebarDropdown">
-            <li><a class="dropdown-item" href="/dashboard/ket_umum">Keterangan Umum</a></li>
-            <li><a class="dropdown-item" href="/ket.domisili">Keterangan Domisili</a></li>
-            <li><a class="dropdown-item" href="#">Keterangan Usaha</a></li>
+            <li><a class="dropdown-item" href="/dashboard/df_surat_umum">Keterangan Umum</a></li>
+            <li><a class="dropdown-item" href="/dashboard/df_surat_domisili">Keterangan Domisili</a></li>
+            <li><a class="dropdown-item" href="/dashboard/df_surat_usaha">Keterangan Usaha</a></li>
+            <li><a class="dropdown-item" href="/dashboard/df_surat_bbm">Rekomendasi BBM</a></li>
           </ul>
         </li>
 

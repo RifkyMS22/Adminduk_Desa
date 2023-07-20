@@ -8,6 +8,6 @@ class KeteranganUmumController extends Controller
 {
     public function index()
     {
-    return view ('dashboard.administrasi.ket_umum');
+    return view ('dashboard.administrasi.create_umum');
     }
 }

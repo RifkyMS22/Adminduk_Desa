@@ -7,7 +7,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\CreatePendudukController;
+use App\Http\Controllers\DashboardUsahaController;
 use App\Http\Controllers\KeteranganUmumController;
+use App\Http\Controllers\DashboardRekBbmController;
+use App\Http\Controllers\DashboardKetUmumController;
+use App\Http\Controllers\DashboardDomisiliController;
 use App\Http\Controllers\DashboardPendudukController;
 
 
@@ -45,7 +49,21 @@ Route::put('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class
 Route::delete('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
 Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 
-Route::get('/dashboard/ket_umum', [KeteranganUmumController::class, 'index'])->name('dashboard.ket_umum.index');
-Route::get('/ket.domisili', function () {
-    return view('dashboard.administrasi.ket_domisili');
+Route::resource('/dashboard/df_surat_umum', DashboardKetUmumController::class);
+Route::get('/dashboard/create_umum', [DashboardKetUmumController::class, 'create'])->name('dashboard.administrasi.create');
+
+Route::resource('/dashboard/df_surat_domisili', DashboardDomisiliController::class);
+Route::post('/dashboard/administrasi', [DashboardDomisiliController::class, 'store'])->name('dashboard.administrasi.store');
+Route::get('/dashboard/domisili', [DashboardDomisiliController::class, 'index'])->name('dashboard.administrasi.index');
+Route::get('/dashboard/create_domisili', [DashboardDomisiliController::class, 'create'])->name('dashboard.administrasi.create');
+
+
+Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);
+Route::get('/dashboard/create_usaha', [DashboardUsahaController::class, 'create'])->name('dashboard.administrasi.create');
+
+Route::resource('/dashboard/df_surat_bbm', DashboardRekBbmController::class);
+Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.administrasi.create');
+
+Route::get('/tampilan_domisili', function(){
+    return view ('dashboard.administrasi.tampilan_domisili');
 });

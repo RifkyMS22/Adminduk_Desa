@@ -10,7 +10,7 @@
 </div>
 
 <div class="table-responsive small">
-    <table class="table table-striped table-sm">
+    <table class="table table-striped table-sm table-bordered">
       <thead>
         <tr>
           <th scope="col">NIK</th>
@@ -91,7 +91,7 @@
   </div>
   <nav aria-label="Page navigation example">
     {{ $dataPenduduk->links('pagination::bootstrap-4') }}
-</nav>
+  </nav>
 
   
 @endsection
