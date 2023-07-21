@@ -9,9 +9,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    
+
                     <div class="card-body">
-                        <form method="POST" action="{{ route('dashboard.administrasi.update', ['domisili' => $domisili->id]) }}">
+                        <form method="POST" action="{{ url('/dashboard/administrasi/' . $domisili->id) }}">
                             @csrf
                             @method('PUT')
 

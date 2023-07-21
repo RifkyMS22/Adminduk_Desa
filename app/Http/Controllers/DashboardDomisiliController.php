@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Domisili;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 
 class DashboardDomisiliController extends Controller
@@ -14,10 +15,10 @@ class DashboardDomisiliController extends Controller
      */
     public function index()
     {
-        
+
         // $ket_domisili = Domisili::latest('updated_at')->paginate(5);
         // return view('dashboard.administrasi.df_surat_domisili', ['ke_domisili' => $ket_domisili]);
-        $domisili =  Domisili::latest('updated_at')->paginate(5);
+        $domisili =  Domisili::latest('updated_at')->get();
         return view('dashboard.administrasi.df_surat_domisili', ['domisili' => $domisili]);
     }
 
@@ -48,35 +49,26 @@ class DashboardDomisiliController extends Controller
         $domisili->no_surat = $request->input('no_surat');
         $domisili->keperluan = $request->input('keperluan');
         $domisili->save();
-        
+
 
         return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil ditambahkan');
-    }
-    
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Domisili $domisili)
-    {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Domisili $domisili)
+    public function edit(string $id)
     {
         // $domisili = Domisili::findOrFail($domisili->id);
-        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
-    
+        $domisili  = Domisili::where('id', '=', $id)->firstOrFail();
+
         return view('dashboard.administrasi.edit_domisili', ['domisili' => $domisili]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Domisili $domisili)
+    public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
             'nik' => 'required',
@@ -84,39 +76,42 @@ class DashboardDomisiliController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
         ]);
-    
-        // $domisili = Domisili::findOrFail($domisili->id);
-        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
+
+        $domisili  = Domisili::where('id', '=', $id)->firstOrFail();
         $domisili->update($validatedData);
-    
+
         return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Domisili $domisili)
+    public function destroy(string $id)
     {
-        $domisili = Domisili::findOrFail($domisili->id);
+        $domisili = Domisili::findOrFail($id);
         $domisili->delete();
         return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil dihapus');
     }
 
-    public function domisili($id)
+    public function export(string $id)
     {
-        // Query data domisili dari database berdasarkan ID
-        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
+        $domisili  = Domisili::where('id', '=', $id)->firstOrFail();
+        // return view('dashboard.administrasi.tampilan_domisili', ['domisili'=> $domisili]);
+        $pdf = new Dompdf();
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE,
+            ]
+        ]);
 
-        // Render view laporan dengan data domisili yang sudah diquery
-        return view('dashboard.administrasi.tampilan_domisili', ['domisili' => $domisili]);
-    }
+        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
 
-    public function tampilDataDomisili()
-    {
-        // Query semua data domisili dari database
-        $dataDomisili = Domisili::all();
+        $pdf->loadHtml(View::make('dashboard.administrasi.tampilan_domisili')->with('domisili', $domisili)->render());
+        $pdf->render();
 
-        // Render view untuk menampilkan data domisili dengan data yang sudah diquery
-        return view('dashboard.administrasi.tampilan_domisili', ['dataDomisili' => $dataDomisili]);
+        return $pdf->stream();
     }
 }

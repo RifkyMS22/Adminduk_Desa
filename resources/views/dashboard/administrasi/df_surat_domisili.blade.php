@@ -42,16 +42,16 @@
                 <td>{{ $domisili->no_surat }}</td>
                 <td>{{ $domisili->keperluan }}</td>
                 <td width="100">
-                    <a href="{{ route('dashboard.administrasi.edit', ['domisili' => $domisili->id]) }}" class="badge bg-warning">
+                    <a href="{{ url('/dashboard/administrasi/' . $domisili->id . '/edit') }}" class="badge bg-warning">
                         <i data-feather="edit"></i>
                     </a>
-                    <a href="{{ route('dashboard.administrasi.destroy', ['domisili' => $domisili->id]) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $domisili->id }}').submit();">
+                    <a href="{{ url('/dashboard/administrasi/' . $domisili->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $domisili->id }}').submit();">
                         <i data-feather="x-circle"></i>
                     </a>
-                    <a href="" class="badge bg-primary" target="_blank">
+                    <a href="{{ url('/dashboard/administrasi/export/' . $domisili->id) }}" class="badge bg-primary" target="_blank">
                         <i data-feather="printer"></i>
                     </a>
-                    <form id="delete-form-{{ $domisili->id }}" action="{{ route('dashboard.administrasi.destroy', ['domisili' => $domisili->id]) }}" method="POST" style="display: none;">
+                    <form id="delete-form-{{ $domisili->id }}" action="{{ url('/dashboard/administrasi/' . $domisili->id) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
                     </form>

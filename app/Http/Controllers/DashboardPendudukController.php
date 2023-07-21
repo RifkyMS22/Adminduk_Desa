@@ -30,7 +30,7 @@ class DashboardPendudukController extends Controller
         //     'nama' => 'required',
         //     'alamat' => 'required',
         // ]);
-    
+
         // DataPenduduk::create($validatedData);
         $dataPenduduk = new DataPenduduk();
         $dataPenduduk->nik = $request->input('nik');
@@ -38,23 +38,23 @@ class DashboardPendudukController extends Controller
         $dataPenduduk->nama = $request->input('nama');
         $dataPenduduk->alamat = $request->input('alamat');
         $dataPenduduk->save();
-    
+
         return redirect()->route('dashboard.penduduk.index')->with('success', 'Data penduduk berhasil ditambahkan');
     }
 
-   
+
     public function show(Penduduk $penduduk)
     {
-       // 
+       //
     }
 
 
     public function edit(Penduduk $penduduk)
     {
         $dataPenduduk = DataPenduduk::findOrFail($penduduk->nik);
-    
+
         return view('dashboard.penduduk.edit', ['dataPenduduk' => $dataPenduduk]);
-        
+
     }
 
     public function update(Request $request, Penduduk $penduduk)
@@ -65,7 +65,7 @@ class DashboardPendudukController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
         ]);
-    
+
         $dataPenduduk = DataPenduduk::findOrFail($penduduk->nik);
         $dataPenduduk->update($validatedData);
 
@@ -75,7 +75,7 @@ class DashboardPendudukController extends Controller
         // $dataPenduduk->nama = $request->input('nama');
         // $dataPenduduk->alamat = $request->input('alamat');
         // $dataPenduduk->save();
-    
+
         return redirect()->route('dashboard.penduduk.index')->with('success', 'Data penduduk berhasil diperbarui');
     }
 
