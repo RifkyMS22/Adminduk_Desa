@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KeteranganUmum;
 use Illuminate\Http\Request;
+use App\Models\KeteranganUmum;
+use App\Http\Controllers\Controller;
 
 class DashboardKetUmumController extends Controller
 {
@@ -12,7 +13,8 @@ class DashboardKetUmumController extends Controller
      */
     public function index()
     {
-        return view ('dashboard.administrasi.df_surat_umum');
+        $keteranganUmum = KeteranganUmum::latest('updated_at')->paginate(5);
+        return view ('dashboard.administrasi.df_surat_umum', ['keteranganUmum' => $keteranganUmum]);
     }
 
     /**
@@ -28,7 +30,24 @@ class DashboardKetUmumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $keteranganUmum = new KeteranganUmum();
+        $keteranganUmum->nama = $request->input('nama');
+        $keteranganUmum->nik = $request->input('nik');
+        $keteranganUmum->no_kk = $request->input('no_kk');
+        $keteranganUmum->jenis_kelamin = $request->input('jenis_kelamin');
+        $keteranganUmum->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+        $keteranganUmum->warganegara = $request->input('warganegara');
+        $keteranganUmum->agama = $request->input('agama');
+        $keteranganUmum->pekerjaan = $request->input('pekerjaan');
+        $keteranganUmum->alamat = $request->input('alamat');
+        $keteranganUmum->no_surat = $request->input('no_surat');
+        $keteranganUmum->berlaku = $request->input('berlaku');
+        $keteranganUmum->ket_lain = $request->input('ket_lain');
+        $keteranganUmum->keperluan = $request->input('keperluan');
+        $keteranganUmum->save();
+        
+
+        return redirect()->route('dashboard.keteranganumum.index')->with('success', 'Data penduduk berhasil ditambahkan');
     }
 
     /**
@@ -44,7 +63,9 @@ class DashboardKetUmumController extends Controller
      */
     public function edit(KeteranganUmum $keteranganUmum)
     {
-        //
+        $keteranganUmum  = KeteranganUmum::where('id', '=', $keteranganUmum->id)->firstOrFail();
+    
+        return view('dashboard.administrasi.edit_keteranganumum', ['keteranganUmum' => $keteranganUmum]);
     }
 
     /**
@@ -52,7 +73,27 @@ class DashboardKetUmumController extends Controller
      */
     public function update(Request $request, KeteranganUmum $keteranganUmum)
     {
-        //
+        $validatedData = $request->validate([
+            'nik' => 'required',
+            'no_kk' => 'required',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'jenis_kelamin'  => 'required',
+            'tmpt_tgl_lahir'  => 'required',
+            'warganegara'  => 'required',
+            'agama'  => 'required',
+            'pekerjaan'  => 'required',
+            'no_surat'  => 'required',
+            'berlaku'  => 'required',
+            'keperluan'  => 'required',
+            'ket_lain'  => 'required',
+        ]);
+
+        $keteranganUmum  = KeteranganUmum::where('id', '=', $keteranganUmum->id)->firstOrFail();
+        $keteranganUmum->update($validatedData);
+
+        return redirect()->route('dashboard.keteranganumum.index')->with('success', 'Data penduduk berhasil diperbarui');
+    
     }
 
     /**
@@ -60,6 +101,9 @@ class DashboardKetUmumController extends Controller
      */
     public function destroy(KeteranganUmum $keteranganUmum)
     {
-        //
+        $keteranganUmum = KeteranganUmum::findOrFail($keteranganUmum->id);
+        $keteranganUmum->delete();
+        return redirect()->route('dashboard.keteranganumum.index')->with('success', 'Data penduduk berhasil dihapus');
+    
     }
 }

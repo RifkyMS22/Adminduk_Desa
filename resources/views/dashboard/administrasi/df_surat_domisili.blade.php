@@ -5,7 +5,7 @@
     <h1 class="h2">Data Surat Keterangan Domisili</h1>
 </div>
 <div class="btn-group">
-    <a href="{{ route('dashboard.administrasi.create') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
+    <a href="{{ route('dashboard.administrasi.create_domisili') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
 </div>
 <div class="table-responsive small">
     <table class="table table-striped table-sm table-bordered">
