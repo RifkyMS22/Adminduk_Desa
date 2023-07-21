@@ -33,7 +33,19 @@
             <li><a class="dropdown-item" href="/dashboard/df_surat_bbm">Rekomendasi BBM</a></li>
           </ul>
         </li>
-
+        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 active" href="#" id="sidebarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi"><use xlink:href="#file-earmark"/></svg>
+            ADMINISTRASI PENDUDUK
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="sidebarDropdown">
+            <li><a class="dropdown-item" href="#">Akta Kelahiran</a></li>
+            <li><a class="dropdown-item" href="#">Akta Kematian</a></li>
+            <li><a class="dropdown-item" href="#">Pindah Datang</a></li>
+            <li><a class="dropdown-item" href="#">Pindah Pergi</a></li>
+          </ul>
+        </li>
 
 
 

@@ -45,11 +45,10 @@ Route::get('/dashboard', function(){
 Route::resource('/dashboard/penduduk', DashboardPendudukController::class);
 Route::post('/dashboard/penduduk', [DashboardPendudukController::class, 'store'])->name('dashboard.penduduk.store');
 Route::get('/dashboard/penduduk', [DashboardPendudukController::class, 'index'])->name('dashboard.penduduk.index');
+Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 Route::get('/dashboard/penduduk/{penduduk}/edit', [DashboardPendudukController::class, 'edit'])->name('dashboard.penduduk.edit');
-Route::post('/dashboard/penduduk/{penduduk}/edit', [DashboardPendudukController::class, 'edit'])->name('dashboard.penduduk.edit');
 Route::put('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'update'])->name('dashboard.penduduk.update');
 Route::delete('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
-Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 
 // Route untuk Keterangan Umum
 Route::resource('/dashboard/df_surat_umum', DashboardKetUmumController::class);
@@ -57,7 +56,6 @@ Route::post('/dashboard/keteranganumum', [DashboardKetUmumController::class, 'st
 Route::get('/dashboard/ketumum', [DashboardKetUmumController::class, 'index'])->name('dashboard.keteranganumum.index');
 Route::get('/dashboard/create_umum', [DashboardKetUmumController::class, 'create'])->name('dashboard.keteranganumum.create');
 Route::get('/dashboard/keteranganumum/{keteranganUmum}/edit', [DashboardKetUmumController::class, 'edit'])->name('dashboard.keteranganumum.edit');
-Route::post('/dashboard/keteranganumum/{keteranganUmum}/edit', [DashboardKetUmumController::class, 'edit'])->name('dashboard.keteranganumum.edit');
 Route::put('/dashboard/keteranganumum/{keteranganUmum}', [DashboardKetUmumController::class, 'update'])->name('dashboard.keteranganumum.update');
 Route::delete('/dashboard/keteranganumum/{keteranganUmum}', [DashboardKetUmumController::class, 'destroy'])->name('dashboard.keteranganumum.destroy');
 
@@ -67,7 +65,6 @@ Route::post('/dashboard/administrasi', [DashboardDomisiliController::class, 'sto
 Route::get('/dashboard/domisili', [DashboardDomisiliController::class, 'index'])->name('dashboard.administrasi.index');
 Route::get('/dashboard/create_domisili', [DashboardDomisiliController::class, 'create'])->name('dashboard.administrasi.create_domisili');
 Route::get('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliController::class, 'edit'])->name('dashboard.administrasi.edit');
-Route::post('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliController::class, 'edit'])->name('dashboard.administrasi.edit');
 Route::put('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'update'])->name('dashboard.administrasi.update');
 Route::delete('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
 Route::get('/dashboard/administrasi/show', [DashboardDomisiliController::class, 'show'])->name('dashboard.administrasi.show');
@@ -79,8 +76,8 @@ Route::get('/dashboard/administrasi/{domisili}/domisili', [DashboardDomisiliCont
 Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);
 Route::get('/dashboard/create_usaha', [DashboardUsahaController::class, 'create'])->name('dashboard.usaha.create');
 
-// Route::resource('/dashboard/df_surat_bbm', DashboardRekBbmController::class);
-// Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.administrasi.create');
+Route::resource('/dashboard/df_surat_bbm', DashboardRekBbmController::class);
+Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.administrasi.create');
 
 Route::get('/tampilan_domisili', function(){
     return view ('dashboard.administrasi.tampilan_domisili');

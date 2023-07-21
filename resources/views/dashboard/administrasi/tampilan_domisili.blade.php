@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td height="20">4. TEMPAT, TANGGAL LAHIR</td>
-            {{-- <td width="450"> : {{ $domisili->tmpt_tgl_lahir }}</td> --}}
+            {{-- <td width="450"> : {{ $domisili->tmpt_tgl_lahir }}</td>  --}}
         </tr>
         <tr>
             <td height="20">5. AGAMA</td>
@@ -163,5 +163,5 @@
     </table>
     </div>
 </body>
-
+{{-- @endforeach --}}
 </html>
