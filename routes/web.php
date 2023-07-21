@@ -76,8 +76,8 @@ Route::get('/dashboard/administrasi/{domisili}/domisili', [DashboardDomisiliCont
 
 
 
-// Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);
-// Route::get('/dashboard/create_usaha', [DashboardUsahaController::class, 'create'])->name('dashboard.administrasi.create');
+Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);
+Route::get('/dashboard/create_usaha', [DashboardUsahaController::class, 'create'])->name('dashboard.administrasi.create');
 
 // Route::resource('/dashboard/df_surat_bbm', DashboardRekBbmController::class);
 // Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.administrasi.create');
