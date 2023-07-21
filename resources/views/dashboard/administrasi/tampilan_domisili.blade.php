@@ -4,6 +4,7 @@
     <title>Kop Surat</title>
 </head>
 
+
 <body>
     <div class="container">
     <table  align="center" width="100%">
@@ -32,7 +33,8 @@
         </tr>
         <tr>
             <td><center>
-                NOMOR : 475/....../VII/2023
+                {{-- NOMOR : 475/001/VII/2023 --}}
+                {{-- NOMOR : {{ $domisili->no_surat }} --}}
             </td>
         </tr>
     </table>
@@ -47,50 +49,54 @@
     </table>
     </br>
     </br>
-    <table  width="100%" align="right">
+    <table border="1" width="100%" align="left">
+    
         <tr>
-            <td height="20">1. NAMA LENGKAP</td>
-            <td width="450"> :</td>
+            <td width="400" height="20">1. NAMA LENGKAP</td>
+            {{-- <td width="700">: {{ $domisili->nama }}</td> --}}
+
+
         </tr>
         <tr>
             <td height="20">2. JENIS KELAMIN</td>
-            <td width="450"> :</td>
+            {{-- <td width="450">: {{ $domisili->jenis_kelamin }}</td> --}}
         </tr>
         <tr>
-            <td height="20">3. NAMA BINTI</td>
-            <td width="450"> :</td>
+            <td height="20">3. BINTI</td>
+            {{-- <td width="450">: {{ $domisili->binti }}</td> --}}
         </tr>
         <tr>
             <td height="20">4. TEMPAT, TANGGAL LAHIR</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->tmpt_tgl_lahir }}</td> --}}
         </tr>
         <tr>
             <td height="20">5. AGAMA</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->agama }}</td> --}}
         </tr>
         <tr>
             <td height="20">6. WARGANEGARA</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->warganegara }}</td> --}}
         </tr>
         <tr>
             <td height="20">7. NO. KTP/NIK</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->nik }}</td> --}}
         </tr>
         <tr>
             <td height="20">8. NO. KARTU KELUARGA</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->no_kk }}</td> --}}
         </tr>
         <tr>
             <td height="20">9. PEKERJAAN</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->pekerjaan }}</td> --}}
         </tr>
         <tr>
             <td height="20">10. ALAMAT</td>
-            <td width="450"> :</td>
+            {{-- <td width="450"> : {{ $domisili->alamat }}</td> --}}
         </tr>
         <tr>
             <td height="10"></td>
         </tr>
+    
     </table>
     <br>
     </br>
@@ -156,5 +162,6 @@
         </tr>
     </table>
     </div>
-    </body>
+</body>
+
 </html>

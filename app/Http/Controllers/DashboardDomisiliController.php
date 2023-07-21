@@ -34,20 +34,6 @@ class DashboardDomisiliController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'nik' => 'required',
-        //     'no_kk' => 'required',
-        //     'nama' => 'required',
-        //     'jenis_kelamin' => 'required',
-        //     'binti' => 'required',
-        //     'tmpt_tgl_lahir' => 'required',
-        //     'agama' => 'required',
-        //     'warganegara' => 'required',
-        //     'pekerjaan' => 'required',
-        //     'alamat' => 'required',
-        //     'no_surat' => 'required',
-        //     'keperluan' => 'required',
-        // ]);
         $domisili = new Domisili();
         $domisili->nama = $request->input('nama');
         $domisili->nik = $request->input('nik');
@@ -81,7 +67,8 @@ class DashboardDomisiliController extends Controller
      */
     public function edit(Domisili $domisili)
     {
-        $domisili = Domisili::findOrFail($domisili->nama);
+        // $domisili = Domisili::findOrFail($domisili->id);
+        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
     
         return view('dashboard.administrasi.edit_domisili', ['domisili' => $domisili]);
     }
@@ -98,10 +85,11 @@ class DashboardDomisiliController extends Controller
             'alamat' => 'required',
         ]);
     
-        $domisili = Domisili::findOrFail($domisili->nama);
+        // $domisili = Domisili::findOrFail($domisili->id);
+        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
         $domisili->update($validatedData);
     
-        return redirect()->route('dashboard.administrasi.df_surat_domisili')->with('success', 'Data penduduk berhasil diperbarui');
+        return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil diperbarui');
     }
 
     /**
@@ -109,8 +97,26 @@ class DashboardDomisiliController extends Controller
      */
     public function destroy(Domisili $domisili)
     {
-        $domisili = Domisili::findOrFail($domisili->nama);
+        $domisili = Domisili::findOrFail($domisili->id);
         $domisili->delete();
-        return redirect()->route('dashboard.administrasi.df_surat_domisili')->with('success', 'Data penduduk berhasil dihapus');
+        return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil dihapus');
+    }
+
+    public function domisili($id)
+    {
+        // Query data domisili dari database berdasarkan ID
+        $domisili  = Domisili::where('id', '=', $domisili->id)->firstOrFail();
+
+        // Render view laporan dengan data domisili yang sudah diquery
+        return view('dashboard.administrasi.tampilan_domisili', ['domisili' => $domisili]);
+    }
+
+    public function tampilDataDomisili()
+    {
+        // Query semua data domisili dari database
+        $dataDomisili = Domisili::all();
+
+        // Render view untuk menampilkan data domisili dengan data yang sudah diquery
+        return view('dashboard.administrasi.tampilan_domisili', ['dataDomisili' => $dataDomisili]);
     }
 }

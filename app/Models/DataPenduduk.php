@@ -12,13 +12,13 @@ class DataPenduduk extends Model
     protected $table = 'data_penduduk';
     protected $primaryKey = 'nik';
 
-    protected $fillable = [
-        'nik',
-        'no_kk',
-        'nama',
-        'alamat',
-        'rt',
-    ];
+    // protected $fillable = [
+    //     'nik',
+    //     'no_kk',
+    //     'nama',
+    //     'alamat',
+    //     'rt',
+    // ];
     
     public $timestamps = false;
 }

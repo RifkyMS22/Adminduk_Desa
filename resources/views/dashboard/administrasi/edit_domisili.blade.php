@@ -11,7 +11,7 @@
                 <div class="card">
                     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('dashboard.administrasi.update', ['domisili' => $domisili->nama]) }}">
+                        <form method="POST" action="{{ route('dashboard.administrasi.update', ['domisili' => $domisili->id]) }}">
                             @csrf
                             @method('PUT')
 
@@ -72,7 +72,7 @@
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Tambah</button>
-                                {{-- <a href="{{ route('dashboard.administrasi.index') }}" class="btn btn-secondary">Kembali</a> --}}
+                                <a href="{{ route('dashboard.administrasi.index') }}" class="btn btn-secondary">Kembali</a>
                             </div>
                         </form>
                     </div>

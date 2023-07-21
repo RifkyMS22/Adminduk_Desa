@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -40,6 +41,7 @@ Route::get('/dashboard', function(){
     return view ('dashboard.index');
     });
 
+// Route untuk Data Penduduk
 Route::resource('/dashboard/penduduk', DashboardPendudukController::class);
 Route::post('/dashboard/penduduk', [DashboardPendudukController::class, 'store'])->name('dashboard.penduduk.store');
 Route::get('/dashboard/penduduk', [DashboardPendudukController::class, 'index'])->name('dashboard.penduduk.index');
@@ -49,9 +51,11 @@ Route::put('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class
 Route::delete('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
 Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 
+// Route untuk Keterangan Umum
 Route::resource('/dashboard/df_surat_umum', DashboardKetUmumController::class);
 Route::get('/dashboard/create_umum', [DashboardKetUmumController::class, 'create'])->name('dashboard.administrasi.create');
 
+// Route untuk Keterangan Domisili
 Route::resource('/dashboard/df_surat_domisili', DashboardDomisiliController::class);
 Route::post('/dashboard/administrasi', [DashboardDomisiliController::class, 'store'])->name('dashboard.administrasi.store');
 Route::get('/dashboard/domisili', [DashboardDomisiliController::class, 'index'])->name('dashboard.administrasi.index');
@@ -60,6 +64,10 @@ Route::get('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliControll
 Route::post('/dashboard/administrasi/{domisili}/edit', [DashboardDomisiliController::class, 'edit'])->name('dashboard.administrasi.edit');
 Route::put('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'update'])->name('dashboard.administrasi.update');
 Route::delete('/dashboard/administrasi/{domisili}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
+Route::get('/dashboard/administrasi/show', [DashboardDomisiliController::class, 'show'])->name('dashboard.administrasi.show');
+Route::get('/dashboard/administrasi/{domisili}/domisili', [DashboardDomisiliController::class, 'domisili'])->name('dashboard.administrasi.domisili');
+
+
 
 
 Route::resource('/dashboard/df_surat_usaha', DashboardUsahaController::class);
