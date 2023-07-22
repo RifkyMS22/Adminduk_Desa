@@ -82,13 +82,8 @@
             <td width="70%">: {{ $domisili->binti }}</td>
         </tr>
         <tr>
-<<<<<<< HEAD
-            <td height="20">4. TEMPAT, TANGGAL LAHIR</td>
-            {{-- <td width="450"> : {{ $domisili->tmpt_tgl_lahir }}</td>  --}}
-=======
             <td width="30%" height="20">4. TEMPAT, TANGGAL LAHIR</td>
             <td width="70%"> : {{ $domisili->tmpt_tgl_lahir }}</td>
->>>>>>> 130a46a (fix pdf and fix router)
         </tr>
         <tr>
             <td width="30%" height="20">5. AGAMA</td>
