@@ -5,9 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DataPendudukController;
+use App\Http\Controllers\DashboardUsahaController;
 use App\Http\Controllers\DashboardKetUmumController;
 use App\Http\Controllers\DashboardDomisiliController;
 use App\Http\Controllers\DashboardPendudukController;
+use App\Http\Controllers\DashboardKelahiranController;
 
 Route::get('/datapenduduk', [DataPendudukController::class, 'index']);
 
@@ -58,3 +60,23 @@ Route::put('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 
 Route::delete('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
 
 Route::get('/dashboard/administrasi/export/{id}', [DashboardDomisiliController::class, 'export'])->name('dashboard.administrasi.export');
+
+
+//Route untuk Keterangan Usaha
+Route::get('/dashboard/df_surat_usaha', [DashboardUsahaController::class, 'index'])->name('dashboard.usaha.index');
+
+//Route untuk kelahiran
+Route::get('/dashboard/kelahiran', [DashboardKelahiranController::class, 'index'])->name('dashboard.adminduk.index');
+Route::get('/dashboard/create_kelahiran', [DashboardKelahiranController::class, 'create'])->name('dashboard.adminduk.create_kelahiran');
+Route::post('/dashboard/adminduk', [DashboardKelahiranController::class, 'store'])->name('dashboard.adminduk.store_kelahiran');
+Route::get('/dashboard/adminduk/{id}/edit', [DashboardKelahiranController::class, 'edit'])->name('dashboard.adminduk.edit_kelahiran');
+Route::put('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'update'])->name('dashboard.adminduk.update');
+Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'destroy'])->name('dashboard.adminduk.destroy_kelahiran');
+
+Route::get('/cetakdomisili', function(){
+    return view ('dashboard.administrasi.tampilan_domisili');
+});
+
+Route::get('/cetaklahir', function(){
+    return view ('dashboard.adminduk.tampilan_lahiran');
+});

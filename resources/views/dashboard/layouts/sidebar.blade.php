@@ -40,7 +40,7 @@
             ADMINISTRASI PENDUDUK
           </a>
           <ul class="dropdown-menu" aria-labelledby="sidebarDropdown">
-            <li><a class="dropdown-item" href="#">Akta Kelahiran</a></li>
+            <li><a class="dropdown-item" href="/dashboard/kelahiran">Akta Kelahiran</a></li>
             <li><a class="dropdown-item" href="#">Akta Kematian</a></li>
             <li><a class="dropdown-item" href="#">Pindah Datang</a></li>
             <li><a class="dropdown-item" href="#">Pindah Pergi</a></li>

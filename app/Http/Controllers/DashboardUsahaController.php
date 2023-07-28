@@ -12,7 +12,15 @@ class DashboardUsahaController extends Controller
      */
     public function index()
     {
-        return view ('dashboard.administrasi.df_surat_usaha');
+        // $usaha =  Usaha::latest('updated_at')->get();
+        // return view ('dashboard.administrasi.df_surat_usaha');
+
+        // $text = "Hello, Laravel!"; // Ganti teks ini sesuai dengan teks yang ingin Anda tampilkan dalam kotak per kotak.
+        // $text = Usaha::pluck('nama')->first();
+        // return view('dashboard.administrasi.index', compact('text'));
+        $data = Usaha::all(); // Ganti 'YourModel' dengan nama model yang sesuai dengan tabel Anda.
+
+        return view('dashboard.administrasi.index', compact('data'));
     }
 
     /**
