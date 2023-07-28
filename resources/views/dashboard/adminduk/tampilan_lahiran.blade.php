@@ -5,8 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kelahiran</title>
-    <style></style>
-    
+    <style>
+        .table-input tr td:first-child {
+                padding: 2px 0 2px 0;
+                vertical-align: top
+        }
+        .table-input tr td:nth-child(2) {
+                padding-top: 3px;
+        }
+
+        .table-input tr td {
+            padding: 0;
+            vertical-align: top;
+        }
+        .td-input .box {
+            border: 1px solid #000;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            margin-top: -1px;
+            margin-left: -1px;
+        }
+        .td-input .box:last-child {
+            border-right: 1px solid #000 !important;
+        }
+    </style>
+
 </head>
 <body>
     <div class="container">
@@ -47,42 +73,62 @@
             </tr>
         </table>
         <br />
-        <div class="container" border="2">
-        <table border="1" width="100%">
+        <div class="container" style="border: 1.5px solid #000; padding: 5px">
+        <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
-                <td colspan="2"><b>Data Pelapor</b></td>
-                {{-- <td></td> --}}
+                <td colspan="3"><b>Data Pelapor</b></td>
             </tr>
             <tr>
                 <td width="35%">Nama</td>
-                <td width="65%">: </div></td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(50, "ARIEL NOAH"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">NIK</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "12312313123123"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">Nomer Dokumen Perjalanan</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "123123213123"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">Nomor Kartu Keluarga</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "22312313123"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">Kewarganegaraan</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "Indonesia"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">Nomer Handphone</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "081231312313"); ?>
+                </td>
             </tr>
             <tr>
                 <td width="35%">Alamat Email</td>
-                <td width="65%">: </td>
+                <td style="padding-right: 5px;">:</td>
+                <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(20, "ariel@gmail.com"); ?>
+                </td>
             </tr>
         </table>
-    </div>
+        </div>
         <br />
         <table border="1" width="100%">
             <tr>
@@ -160,7 +206,7 @@
                     <td width="35%">Warganegara</td>
                     <td width="65%">: </td>
                 </tr>
-                
+
                 <tr>
                     <td colspan="2"><b>DATA SAKSI II</b></td>
                     {{-- <td></td> --}}
