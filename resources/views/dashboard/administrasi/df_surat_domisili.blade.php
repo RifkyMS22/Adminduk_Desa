@@ -48,7 +48,7 @@
                     <a href="{{ url('/dashboard/administrasi/' . $domisili->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $domisili->id }}').submit();">
                         <i data-feather="x-circle"></i>
                     </a>
-                    <a href="{{ url('/dashboard/administrasi/export/' . $domisili->id) }}" class="badge bg-primary" target="_blank">
+                    <a href="{{ url('/dashboard/administrasi/domisili/export/' . $domisili->id) }}" class="badge bg-primary" target="_blank">
                         <i data-feather="printer"></i>
                     </a>
                     <form id="delete-form-{{ $domisili->id }}" action="{{ url('/dashboard/administrasi/' . $domisili->id) }}" method="POST" style="display: none;">

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\KeteranganUmum;
+use Dompdf\Dompdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 class DashboardKetUmumController extends Controller
 {
@@ -105,5 +107,26 @@ class DashboardKetUmumController extends Controller
         $keteranganUmum->delete();
         return redirect()->route('dashboard.keteranganumum.index')->with('success', 'Data penduduk berhasil dihapus');
     
+    }
+
+    public function export(string $id)
+    {
+        $keteranganUmum  = KeteranganUmum::where('id', '=', $id)->firstOrFail();
+        $pdf = new Dompdf();
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE,
+            ]
+        ]);
+
+        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
+
+        $pdf->loadHtml(View::make('dashboard.administrasi.tampilan_umum')->with('keteranganUmum', $keteranganUmum)->render());
+        $pdf->render();
+
+        return $pdf->stream();
     }
 }

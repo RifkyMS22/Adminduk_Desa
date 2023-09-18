@@ -50,7 +50,7 @@
                     <a href="{{ route('dashboard.keteranganumum.destroy', ['keteranganUmum' => $keteranganUmum->id]) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $keteranganUmum->id }}').submit();">
                         <i data-feather="x-circle"></i>
                     </a>
-                    <a href="" class="badge bg-primary" target="_blank">
+                    <a href="{{ url('/dashboard/administrasi/umum/export/' . $keteranganUmum->id) }}" class="badge bg-primary" target="_blank">
                         <i data-feather="printer"></i>
                     </a>
                     <form id="delete-form-{{ $keteranganUmum->id }}" action="{{ route('dashboard.keteranganumum.destroy', ['keteranganUmum' => $keteranganUmum->id]) }}" method="POST" style="display: none;">

@@ -6,6 +6,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\DashboardUsahaController;
+use App\Http\Controllers\DashboardRekBbmController;
 use App\Http\Controllers\DashboardKetUmumController;
 use App\Http\Controllers\DashboardDomisiliController;
 use App\Http\Controllers\DashboardPendudukController;
@@ -46,6 +47,8 @@ Route::put('/dashboard/keteranganumum/{keteranganUmum}', [DashboardKetUmumContro
 
 Route::delete('/dashboard/keteranganumum/{keteranganUmum}', [DashboardKetUmumController::class, 'destroy'])->name('dashboard.keteranganumum.destroy');
 
+Route::get('/dashboard/administrasi/umum/export/{id}', [DashboardKetUmumController::class, 'export'])->name('dashboard.administrasi.umum.export');
+
 // Route untuk Keterangan Domisili
 Route::get('/dashboard/df_surat_domisili', [DashboardDomisiliController::class, 'index'])->name('dashboard.administrasi.index');
 
@@ -59,11 +62,20 @@ Route::put('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 
 
 Route::delete('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
 
-Route::get('/dashboard/administrasi/export/{id}', [DashboardDomisiliController::class, 'export'])->name('dashboard.administrasi.export');
+Route::get('/dashboard/administrasi/domisili/export/{id}', [DashboardDomisiliController::class, 'export'])->name('dashboard.administrasi.domisili.export');
 
 
 //Route untuk Keterangan Usaha
 Route::get('/dashboard/df_surat_usaha', [DashboardUsahaController::class, 'index'])->name('dashboard.usaha.index');
+
+//Route untuk rekomendasi BBM
+Route::get('/dashboard/df_surat_bbm', [DashboardRekBbmController::class, 'index'])->name('dashboard.bbm.index');
+Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.bbm.create');
+Route::post('/dahboard/bbm/store', [DashboardRekBbmController::class, 'store'])->name('dashboard.bbm.store');
+Route::get('/dashboard/bbm/administrasi/{id}/edit', [DashboardRekBbmController::class, 'edit'])->name('dashboard.bbm.edit');
+Route::put('/dashboard/bbm/adminnistrasi/{id}', [DashboardRekBbmController::class, 'update'])->name('dashboard.bbm.update');
+Route::delete('/dashboard/bbm/administrasi/{id}', [DashboardRekBbmController::class, 'destroy'])->name('dashboard.bbm.destroy');
+Route::get('/dashboard/bbm/administrasi/export/{id}', [DashboardRekBbmController::class, 'export'])->name('dashboard.bbm.export');
 
 //Route untuk kelahiran
 Route::get('/dashboard/kelahiran', [DashboardKelahiranController::class, 'index'])->name('dashboard.adminduk.index');
@@ -72,6 +84,7 @@ Route::post('/dashboard/adminduk', [DashboardKelahiranController::class, 'store'
 Route::get('/dashboard/adminduk/{id}/edit', [DashboardKelahiranController::class, 'edit'])->name('dashboard.adminduk.edit_kelahiran');
 Route::put('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'update'])->name('dashboard.adminduk.update');
 Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'destroy'])->name('dashboard.adminduk.destroy_kelahiran');
+Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::class, 'export'])->name('dashboard.adminduk.export');
 
 Route::get('/cetakdomisili', function(){
     return view ('dashboard.administrasi.tampilan_domisili');
@@ -79,4 +92,12 @@ Route::get('/cetakdomisili', function(){
 
 Route::get('/cetaklahir', function(){
     return view ('dashboard.adminduk.tampilan_lahiran');
+});
+
+Route::get('/cetakumum', function(){
+    return view ('dashboard.administrasi.tampilan_umum');
+});
+
+Route::get('/cetakbbm', function(){
+    return view ('dashboard.administrasi.tampilan_bbm');
 });

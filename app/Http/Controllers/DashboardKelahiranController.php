@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelahiran;
-use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\View;
+use Illuminate\Http\Request;
 
 class DashboardKelahiranController extends Controller
 {
@@ -117,5 +118,27 @@ class DashboardKelahiranController extends Controller
         $kelahiran = Kelahiran::findOrFail($id);
         $kelahiran->delete();
         return redirect()->route('dashboard.adminduk.index')->with('success', 'Data penduduk berhasil dihapus');
+    }
+
+    public function export(string $id)
+    {
+        $kelahiran  = Kelahiran::where('id', '=', $id)->firstOrFail();
+        // return view('dashboard.administrasi.tampilan_domisili', ['domisili'=> $domisili]);
+        $pdf = new Dompdf();
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE,
+            ]
+        ]);
+
+        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
+
+        $pdf->loadHtml(View::make('dashboard.adminduk.tampilan_lahiran')->with('kelahiran', $kelahiran)->render());
+        $pdf->render();
+
+        return $pdf->stream();
     }
 }

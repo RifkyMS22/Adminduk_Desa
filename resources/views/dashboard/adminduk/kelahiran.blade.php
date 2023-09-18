@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Kelahiran Anak Desa Palar</h1>
 </div>
-<div class="btn-group mb-3">
+<div class="btn-group">
     <a href="{{ route('dashboard.adminduk.create_kelahiran') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
 </div>
 <div class="table-responsive small">
