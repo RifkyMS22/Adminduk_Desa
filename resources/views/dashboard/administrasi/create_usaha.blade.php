@@ -16,8 +16,8 @@
                             <label for="nik">NIK</label>
                             <select id="nik" class="form-control" name="nik" required>
                                 <option value="" disabled selected>Pilih NIK</option>
-                                @foreach ($nikes as $id => $nik)
-                                <option value="{{ $id }}">{{ $nik }}</option>
+                                @foreach ($nikes as $data)
+                                <option value="{{ $data->nik }}">{{ $data->nik }}</option>
                                 @endforeach
                             </select>
                             <label for="no_kk">NO KK</label>
@@ -60,7 +60,6 @@
 $(document).ready(function() {
     $('#nik').on('change', function() { // Ganti 'nik' menjadi '#nik'
         var selectedNik = $(this).val();
-        
         $.ajax({
             url: '/get-data-by-nik/' + selectedNik,
             type: 'GET',
@@ -70,7 +69,7 @@ $(document).ready(function() {
                 // Gunakan tanda '#' untuk mengidentifikasi ID elemen
                 $('#no_kk').val(data.no_kk);
                 $('#nama').val(data.nama);
-                $('#jenis_kelamin').val(data.jenis_kelamin);
+                $('#jenis_kelamin').val(data.jns_kelamin);
             },
             error: function() {
                 console.error('Error fetching data.');

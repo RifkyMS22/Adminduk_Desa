@@ -24,7 +24,7 @@ class DashboardUsahaController extends Controller
      */
     public function create()
     {
-        $nikes = DataPenduduk::pluck('nik'); // Gantilah 'nik' dan 'id' sesuai dengan kolom yang sesuai di tabel DataPenduduk
+        $nikes = DataPenduduk::select('nik', 'nama', 'no_kk', 'jns_kelamin')->get(); // Gantilah 'nik' dan 'id' sesuai dengan kolom yang sesuai di tabel DataPenduduk
         return view('dashboard.administrasi.create_usaha', compact('nikes'));
     }
 
@@ -126,13 +126,13 @@ class DashboardUsahaController extends Controller
     {
         // Lakukan pencarian data berdasarkan NIK
         $data = DataPenduduk::where('nik', $nik)->first();
-    
+
         if ($data) {
             return response()->json($data);
         } else {
             return response()->json(['error' => 'Data not found'], 404);
         }
     }
-        
+
 
 }
