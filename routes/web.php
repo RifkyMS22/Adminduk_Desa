@@ -60,8 +60,8 @@ Route::get('/dashboard/usaha/administrasi/{id}/edit', [DashboardUsahaController:
 Route::put('/dashboard/usaha/administrasi/{id}', [DashboardUsahaController::class, 'update'])->name('dashboard.usaha.update');
 Route::delete('/dashboard/usaha/administrasi/{id}', [DashboardUsahaController::class, 'destroy'])->name('dashboard.usaha.destroy');
 Route::get('/dashboard/usaha/administrasi/export/{id}', [DashboardUsahaController::class, 'export'])->name('dashboard.usaha.export');
-Route::post('/prosesForm', [DashboardUsahaController::class, 'prosesForm'])->name('dashboard.usaha.prosesForm');
-Route::get('/tampilkanForm', [DashboardUsahaController::class, 'tampilkanForm'])->name('dashboard.usaha.tampilkanForm');
+Route::get('/get-data-by-nik/{nik}', [DashboardUsahaController::class, 'getDataByNik']);
+
 
 
 //Route untuk rekomendasi BBM

@@ -24,31 +24,49 @@ class DashboardUsahaController extends Controller
      */
     public function create()
     {
-        return view ('dashboard.administrasi.create_usaha');
+        $nikes = DataPenduduk::pluck('nik'); // Gantilah 'nik' dan 'id' sesuai dengan kolom yang sesuai di tabel DataPenduduk
+        return view('dashboard.administrasi.create_usaha', compact('nikes'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $usaha = new Usaha();
-        $usaha->nama = $request->input('nama');
-        $usaha->nik = $request->input('nik');
-        $usaha->no_kk = $request->input('no_kk');
-        $usaha->jenis_kelamin = $request->input('jenis_kelamin');
-        $usaha->binti = $request->input('binti');
-        $usaha->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
-        $usaha->agama = $request->input('agama');
-        $usaha->warganegara = $request->input('warganegara');
-        $usaha->pekerjaan = $request->input('pekerjaan');
-        $usaha->alamat = $request->input('alamat');
-        $usaha->no_surat = $request->input('no_surat');
-        $usaha->keperluan = $request->input('keperluan');
-        $usaha->save();
+{
+    $validatedData = $request->validate([
+        'nik' => 'required',
+        'no_kk' => 'required',
+        'nama' => 'required',
+        'jenis_kelamin' => 'required',
+        'binti' => 'required',
+        'tmpt_tgl_lahir' => 'required',
+        'agama' => 'required',
+        'warganegara' => 'required',
+        'pekerjaan' => 'required',
+        'alamat' => 'required',
+        'no_surat' => 'required',
+        'keperluan' => 'required',
+    ]);
 
-        return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil ditambahkan');
-    }
+    $usaha = new Usaha();
+    $usaha->nik = $request->input('nik'); // Mengambil NIK yang dipilih dari dropdown
+    $usaha->no_kk = $request->input('no_kk');
+    $usaha->nama = $request->input('nama');
+    $usaha->jenis_kelamin = $request->input('jenis_kelamin');
+    $usaha->binti = $request->input('binti');
+    $usaha->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+    $usaha->agama = $request->input('agama');
+    $usaha->warganegara = $request->input('warganegara');
+    $usaha->pekerjaan = $request->input('pekerjaan');
+    $usaha->alamat = $request->input('alamat');
+    $usaha->no_surat = $request->input('no_surat');
+    $usaha->keperluan = $request->input('keperluan');
+    $usaha->save();
+
+    return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil ditambahkan');
+}
+
 
     /**
      * Display the specified resource.
@@ -104,24 +122,17 @@ class DashboardUsahaController extends Controller
         return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil dihapus');
     }
 
-    public function tampilkanForm()
-{
-    $dataPenduduk = DataPenduduk::pluck('nama_kolom_nik', 'id'); // Sesuaikan dengan nama kolom yang sesuai
-    return view('form', compact('dataPenduduk'));
-}
-
-public function prosesForm(Request $request)
-{
-    $nik = $request->input('nik');
-    $dataLainnyaId = $request->input('data_lainnya');
-
-    // Mengambil data lainnya dari database berdasarkan $dataLainnyaId
-    $dataLainnya = DataUtama::find($dataLainnyaId);
-
-    // Lakukan apa yang perlu dilakukan dengan data yang sudah diambil
-    // Misalnya, simpan ke database lain atau tampilkan ke pengguna
-
-    return redirect('/form')->with('success', 'Form berhasil disubmit.');
-}
+    public function getDataByNik($nik)
+    {
+        // Lakukan pencarian data berdasarkan NIK
+        $data = DataPenduduk::where('nik', $nik)->first();
+    
+        if ($data) {
+            return response()->json($data);
+        } else {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
+    }
+        
 
 }

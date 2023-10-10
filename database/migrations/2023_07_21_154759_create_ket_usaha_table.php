@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ket_usaha', function (Blueprint $table) {
-            $table->id();
+            
+            $table->string('nik')->primary();
+            $table->string('no_kk');
             $table->string('nama');
+            $table->string('jenis_kelamin');
+            $table->string('binti');
+            $table->string('tmpt_tgl_lahir');
+            $table->string('agama');
+            $table->string('warganegara');
+            $table->string('pekerjaan');
+            $table->string('alamat');
+            $table->string('no_surat');
+            $table->string('keperluan');
             $table->timestamps();
         });
     }
