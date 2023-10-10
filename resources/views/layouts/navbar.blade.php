@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/home">Home</a>
                 </li>
@@ -29,6 +29,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard">Dashboard</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+
+                {{-- <li class="nav-item">
+                    <a href="/login" class="nav-link" {{ ($active == "login") ? 'active' : '' }}><i class="bi bi-box-arrow-in-right"></i>Login</a>
+                </li> --}}
             </ul>
         </div>
     </div>

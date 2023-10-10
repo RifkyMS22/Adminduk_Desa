@@ -14,11 +14,11 @@
                         <form method="POST" action="{{ route('dashboard.administrasi.store') }}">
                             @csrf
 
+
                             <div class="form-group">
                                 <label for="nik">NIK</label>
                                 <input id="nik" type="text" class="form-control" name="nik" required>
                             </div>
-
                             <div class="form-group">
                                 <label for="no_kk">NO KK</label>
                                 <input id="no_kk" type="text" class="form-control" name="no_kk" required>

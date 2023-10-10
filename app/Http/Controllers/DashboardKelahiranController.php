@@ -99,9 +99,47 @@ class DashboardKelahiranController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
+            //data bayi
             'nik_bayi' => 'required',
             'nama_bayi' => 'required',
             'warganegara_bayi' => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'tmpt_dilahirkan' => 'required',
+            'tmpy_kelahiran' => 'required',
+            'tgl_lahir' => 'required',
+            'jam' => 'required',
+            'jns_kelamin' => 'required',
+            'anak_ke' => 'required',
+            'pnjng_lahir' => 'required',
+            'brt_bayi' => 'required',
+            'pjg_bayi' => 'required',
+
+            //data ayah
+            'nik_ayah' => 'required',
+            'nama_ayah' => 'required',
+            'tmpt_lahir_ayah' => 'required',
+            'tgl_lahir_ayah' => 'required',
+            'no_kk_ayah' => 'required',
+            'warganegara_ayah' => 'required',
+
+            //data ibu
+            'nik_ibu' => 'required',
+            'nama_ibu' => 'required',
+            'tmpt_lahir_ibu' => 'required',
+            'tgl_lahir_ibu' => 'required',
+            'no_kk_ibu' => 'required',
+            'warganegara_ibu' => 'required',
+
+            //data saksi
+            'nik_s1' => 'required',
+            'nama_s1' => 'required',
+            'no_kk_s1' => 'required',
+            'warganegara_s1' => 'required',
+            'nik_s2' => 'required',
+            'nama_s2' => 'required',
+            'no_kk_s2' => 'required',
+            'warganegara_s2' => 'required',
         ]);
 
         $kelahiran  = Kelahiran::where('id', '=', $id)->firstOrFail();

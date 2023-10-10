@@ -11,5 +11,21 @@ class Penduduk extends Model
     protected $table = 'data_penduduk';
     protected $primaryKey = 'nik';
 
+    protected $fillable = [
+    'nik',
+    'nama',
+    'tmpt_tgl_lahir',
+    'nama_ayah',
+    'nama_ibu',
+    'agama',
+    'pekerjaan',
+    'pendidikan',
+    'jenis_kelamin',
+    'status_perkawinan',
+    'stts_hub_keluarga',
+    'kewarganegaraan',
 
+    ];
+
+    public $timestamps = false;
 }

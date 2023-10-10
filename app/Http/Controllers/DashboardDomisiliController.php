@@ -75,6 +75,14 @@ class DashboardDomisiliController extends Controller
             'no_kk' => 'required',
             'nama' => 'required',
             'alamat' => 'required',
+            'jenis_kelamin' => 'required',
+            'binti' => 'required',
+            'tmpt_tgl_lahir' => 'required',
+            'agama' => 'required',
+            'warganegara' => 'required',
+            'pekerjaan' => 'required',
+            'no_surat' => 'required',
+            'keperluan' => 'required',
         ]);
 
         $domisili  = Domisili::where('id', '=', $id)->firstOrFail();
@@ -114,4 +122,5 @@ class DashboardDomisiliController extends Controller
 
         return $pdf->stream();
     }
+
 }

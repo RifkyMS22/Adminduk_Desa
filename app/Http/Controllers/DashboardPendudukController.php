@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Penduduk;
 use App\Models\DataPenduduk;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Dompdf\Dompdf;
 
 class DashboardPendudukController extends Controller
 {

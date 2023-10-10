@@ -11,30 +11,17 @@
                 <div class="card">
                     
                     <div class="card-body">
-                        <form method="POST" action="{{ route('dashboard.penduduk.store') }}">
+                        <form method="POST" action="{{ route('dashboard.usaha.store') }}">
                             @csrf
 
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input id="nik" type="text" class="form-control" name="nik" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="no_kk">NO KK</label>
-                                <input id="no_kk" type="text" class="form-control" name="no_kk" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input id="nama" type="text" class="form-control" name="nama" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input id="alamat" type="text" class="form-control" name="alamat" required>
-                            </div>
-
-                            <!-- Tambahkan input lain sesuai dengan kebutuhan Anda -->
+                            <form action="/proses-form" method="POST">
+                                @csrf
+                            
+                                <label for="nik">NIK:</label>
+                                <input type="text" name="nik" id="nik" required>
+                            
+                            
+                            
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Tambah</button>

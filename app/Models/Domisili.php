@@ -25,6 +25,7 @@ class Domisili extends Model
         'alamat',
         'no_surat',
         'keperluan',
+        
     ];
 
     public $timestamps = false;
