@@ -15,33 +15,27 @@
                         <div class="form-group">
                             <label for="nik">NIK</label>
                             <select id="nik" class="form-control" name="nik" required>
-                                <option value="" disabled selected>Pilih NIK</option>
+                                <option value="" disabled selected>Pilih NIK atau masukkan NIK baru</option>
                                 @foreach ($nikes as $data)
                                 <option value="{{ $data->nik }}">{{ $data->nik }}</option>
                                 @endforeach
                             </select>
-                            <label for="no_kk">NO KK</label>
-                            <input id="no_kk" type="text" class="form-control" name="no_kk" required>
-                            <label for="nama">Nama</label>
-                            <input id="nama" type="text" class="form-control" name="nama" required>
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
                         </div>
-
-                        {{-- <div class="form-group">
-                            <label for="no_kk">NO KK</label>
+                        
+                        <div class="form-group">
+                            <label for="no_kk">No. KK</label>
                             <input id="no_kk" type="text" class="form-control" name="no_kk" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="nama">Nama</label>
                             <input id="nama" type="text" class="form-control" name="nama" required>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
-                        </div> --}}
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Tambah</button>
@@ -55,27 +49,43 @@
 </div>
 
 <!-- Kode JavaScript -->
-<<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('#nik').on('change', function() { // Ganti 'nik' menjadi '#nik'
-        var selectedNik = $(this).val();
-        $.ajax({
-            url: '/get-data-by-nik/' + selectedNik,
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                // Anda perlu menggunakan selector yang benar di sini
-                // Gunakan tanda '#' untuk mengidentifikasi ID elemen
-                $('#no_kk').val(data.no_kk);
-                $('#nama').val(data.nama);
-                $('#jenis_kelamin').val(data.jns_kelamin);
+    $(document).ready(function() {
+        // Inisialisasi Select2 di elemen 'nik'
+        $('#nik').select2({
+            ajax: {
+                url: '/get-data-by-nik/' + selectedNik, // Ganti dengan URL yang sesuai di aplikasi Laravel Anda
+                processResults: function (data) {
+                return {
+                results: data
+                };
             },
-            error: function() {
-                console.error('Error fetching data.');
-            }
+        },
+            tags: true // Aktifkan fitur input manual
+    });
+
+
+        // Menggunakan event 'change' pada elemen 'nik'
+        $('#nik').on('change', function() {
+            var selectedNik = $(this).val();
+            $.ajax({
+                url: '/get-data-by-nik/' + selectedNik,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#no_kk').val(data.no_kk);
+                    $('#nama').val(data.nama);
+                    $('#jenis_kelamin').val(data.jns_kelamin);
+                },
+                error: function() {
+                    console.error('Error fetching data.');
+                }
+            });
         });
     });
-});
 </script>
+
 @endsection
