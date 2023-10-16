@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('dashboard.usaha.store') }}">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group mb-3">
                             <label for="nik">NIK</label>
                             <select id="nik" class="form-control" name="nik" required>
                                 <option value="" disabled selected>Pilih NIK atau masukkan NIK baru</option>
@@ -21,18 +21,18 @@
                                 @endforeach
                             </select>
                         </div>
-                        
-                        <div class="form-group">
+
+                        <div class="form-group mb-3">
                             <label for="no_kk">No. KK</label>
                             <input id="no_kk" type="text" class="form-control" name="no_kk" required>
                         </div>
-                        
-                        <div class="form-group">
+
+                        <div class="form-group mb-3">
                             <label for="nama">Nama</label>
                             <input id="nama" type="text" class="form-control" name="nama" required>
                         </div>
-                        
-                        <div class="form-group">
+
+                        <div class="form-group mb-3">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
                         </div>
@@ -49,24 +49,12 @@
 </div>
 
 <!-- Kode JavaScript -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         // Inisialisasi Select2 di elemen 'nik'
         $('#nik').select2({
-            ajax: {
-                url: '/get-data-by-nik/' + selectedNik, // Ganti dengan URL yang sesuai di aplikasi Laravel Anda
-                processResults: function (data) {
-                return {
-                results: data
-                };
-            },
-        },
-            tags: true // Aktifkan fitur input manual
-    });
-
+            theme: 'bootstrap-5'
+        });
 
         // Menggunakan event 'change' pada elemen 'nik'
         $('#nik').on('change', function() {
