@@ -66,7 +66,7 @@
             <td>{{ $penduduk->nik_ibu }}</td>
             <td>{{ $penduduk->nama_ibu }}</td>
             <td>
-              <a href="{{ route('dashboard.penduduk.edit', ['penduduk' => $penduduk->nik]) }}" class="badge bg-warning">
+              {{-- <a href="{{ route('dashboard.penduduk.edit', ['penduduk' => $penduduk->nik]) }}" class="badge bg-warning">
                 <i data-feather="edit"></i>
               </a>
               <a href="{{ route('dashboard.penduduk.destroy', ['penduduk' => $penduduk->nik]) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
@@ -75,7 +75,18 @@
               <form id="delete-form" action="{{ route('dashboard.penduduk.destroy', ['penduduk' => $penduduk->nik]) }}" method="POST" style="display: none;">
                 @csrf
                 @method('DELETE')
-              </form> 
+              </form>  --}}
+
+              <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik . '/edit') }}" class="badge bg-warning">
+                <i data-feather="edit"></i>
+              </a>
+              <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $penduduk->nik }}').submit();">
+                <i data-feather="x-circle"></i>
+              </a>
+              <form id="delete-form-{{ $penduduk->nik }}" action="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" method="POST" style="display: none;">
+                @csrf
+                @method('DELETE')
+              </form>
             </td>
             
           </tr> 

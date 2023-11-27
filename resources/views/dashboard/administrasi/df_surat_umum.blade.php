@@ -15,7 +15,8 @@
             <th scope="col">NIK</th>
             <th scope="col">No KK</th>
             <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Tempat, tanggal Lahir</th>
+            <th scope="col">Tempat Lahir</th>
+            <th scope="col">Tanggal Lahir</th>
             <th scope="col">Warganegara</th>
             <th scope="col">Agama</th>
             <th scope="col">Pekerjaan</th>
@@ -34,7 +35,8 @@
                 <td>{{ $keteranganUmum->nik }}</td>
                 <td>{{ $keteranganUmum->no_kk }}</td>
                 <td>{{ $keteranganUmum->jenis_kelamin }}</td>
-                <td>{{ $keteranganUmum->tmpt_tgl_lahir}}</td>
+                <td>{{ $keteranganUmum->tmpt_lahir}}</td>
+                <td>{{ $keteranganUmum->tgl_lahir}}</td>
                 <td>{{ $keteranganUmum->warganegara}}</td>
                 <td>{{ $keteranganUmum->agama}}</td>
                 <td>{{ $keteranganUmum->pekerjaan}}</td>

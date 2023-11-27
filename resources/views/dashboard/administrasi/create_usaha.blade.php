@@ -36,11 +36,53 @@
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
                         </div>
+                        
+                        <div class="form-group mb-3">
+                            <label for="binti">binti</label>
+                            <input id="binti" type="text" class="form-control" name="binti" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="tmpt_lahir">Tempat Lahir</label>
+                            <input id="tmpt_lahir" type="text" class="form-control" name="tmpt_lahir" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="tgl_lahir">Tanggal Lahir</label>
+                            <input id="tgl_lahir" type="text" class="form-control" name="tgl_lahir" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="agama">Agama</label>
+                            <input id="agama" type="text" class="form-control" name="agama" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="warganegara">Warganegara</label>
+                            <input id="warganegara" type="text" class="form-control" name="warganegara" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="pekerjaan">Pekerjaan</label>
+                            <input id="pekerjaan" type="text" class="form-control" name="pekerjaan" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="no_surat">No Surat</label>
+                            <input id="no_surat" type="text" class="form-control" name="no_surat" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="keperluan">Keperluan</label>
+                            <input id="keperluan" type="text" class="form-control" name="keperluan" required>
+                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Tambah</button>
                             <a href="{{ route('dashboard.penduduk.index') }}" class="btn btn-secondary">Kembali</a>
                         </div>
+
+                        
+
                     </form>
                 </div>
             </div>
@@ -67,6 +109,13 @@
                     $('#no_kk').val(data.no_kk);
                     $('#nama').val(data.nama);
                     $('#jenis_kelamin').val(data.jns_kelamin);
+                    $('#alamat').val(data.alamat);
+                    $('#jns_kelamin').val(data.jns_kelamin);
+                    $('#nama_ayah').val(data.nama_ayah);
+                    $('#pekerjaan').val(data.pekerjaan);
+                    $('#agama').val(data.agama);
+                    $('#tmpt_lahir').val(data.tmpt_lahir);
+                    $('#tgl_lahir').val(data.tgl_lahir);
                 },
                 error: function() {
                     console.error('Error fetching data.');

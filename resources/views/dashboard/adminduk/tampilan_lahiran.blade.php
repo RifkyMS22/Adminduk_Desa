@@ -35,7 +35,7 @@ function generateDivBoxes($numBoxes, $content) {
             height: 13px;
             text-align: center;
             line-height: 13px;
-            
+            margin: 0.2px;
           
             
         }
@@ -53,7 +53,7 @@ function generateDivBoxes($numBoxes, $content) {
             border-right: 0.5px solid #000 !important;
         }
         .font-size {
-            font-size: 10px;
+            font-size: 9px;
             font-family: Arial, Helvetica, sans-serif;
         }
         .jarak-kotak{
@@ -446,11 +446,17 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">Tanggal Lahir Ayah</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                    .. Tgl : <?= generateDivBoxes(2, ""); ?>
-                    .. Bln : <?= generateDivBoxes(2, ""); ?>
-                    . Thn : <?= generateDivBoxes(4, ""); ?>
+                    Tgl : <span style="margin-right: 20px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 20px;"></span> <!-- Elemen pembatas -->
+                    Bln : <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 10px;"></span>
+                    Thn : <span style="margin-right: 12px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
                 </td>
             </tr>
+            
             <tr>
                 <td width="30%">Kewarganegaraan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
@@ -480,9 +486,14 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
                 
-                    . Tgl : <?= generateDivBoxes(2, ""); ?>
-                    . Bln : <?= generateDivBoxes(2, ""); ?>
-                    . Thn : <?= generateDivBoxes(4, ""); ?>
+                    Tgl : <span style="margin-right: 20px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 20px;"></span> <!-- Elemen pembatas -->
+                    Bln : <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 10px;"></span>
+                    Thn : <span style="margin-right: 12px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
                 </td>
             </tr>
             <tr>
@@ -503,73 +514,161 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">1. NIK</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">2. Nama</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(34, ""); ?>
+                </td>
+                
             </tr>
             <tr>
-                <td width="30%">3. enis Kelamin</td>
+                <td width="30%">3. Jenis Kelamin</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Laki-Laki
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Perempuan
+                
+                </td>
             </tr>
             <tr>
-                <td width="30%">4. empat Di Lahirkan</td>
+                <td width="30%">4. Tempat Di Lahirkan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. RS/RB
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Puskesmas
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Polindes
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Rumah
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Lainnya
+                </td>
             </tr>
             <tr>
                 <td width="30%">5. Tempat Kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    <?= generateDivBoxes(34, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">6. Hari dan Tanggal Lahir</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    Hari :
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(6, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Tgl :
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    Thn :
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+            
+                </td>
             </tr>
             <tr>
                 <td width="30%">7. Pukul</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">8. Jenis Kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Tunggal
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Kembar 2
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 5px;"></span>
+                    3. Kembar 3
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Kembar 4
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Lainnya
+            
+                </td>
             </tr>
             <tr>
                 <td width="30%">9. Kelahiran Ke</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">10. Penolong Kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Dokter
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Bidan/Perawat
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 5px;"></span>
+                    3. Dukun
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Lainnya
+            
+                </td>
             </tr>
             <tr>
                 <td width="30%">11. Berat Bayi</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(3, ""); ?>
+                    <span style="margin-right: 3px;"></span>    
+                    Kg
+                </td>
             </tr>
             <tr>
                 <td width="30%">12. Panjang Bayi</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(0, ""); ?></td>
+                <?= generateDivBoxes(3, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Kg
+                </td>
             </tr>
         </table>
         </div>
@@ -583,61 +682,156 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">Lamanya dalam kandungan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(2, ""); ?>
+                <span style="margin-right: 1px;"></span>
+                Bulan
+                </td>
             </tr>
             <tr>
                 <td width="30%">Jenis Kelamin</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(1, ""); ?>
+                <span style="margin-right: 3px;"></span>
+                1. Laki-laki
+                <span style="margin-right: 3px;"></span>
+                <?= generateDivBoxes(2, ""); ?>
+                <span style="margin-right: 3px;"></span>
+                2. Perempuan
+                </td>
             </tr>
             <tr>
                 <td width="30%">Tanggal Lahir Mati</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                
+                Tgl :
+                <span style="margin-right: 3px;"></span>
+                <?= generateDivBoxes(2, ""); ?>
+                <span style="margin-right: 3px;"></span>
+                Bln :
+                <span style="margin-right: 3px;"></span>
+                <?= generateDivBoxes(2, ""); ?>
+                Thn :
+                <span style="margin-right: 3px;"></span>
+                <?= generateDivBoxes(4, ""); ?>
+                <span style="margin-right: 3px;"></span>
+                </td>
             </tr>
             <tr>
                 <td width="30%">Jenis Kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Tunggal
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Kembar 2
+                    <span style="margin-right: 3px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 5px;"></span>
+                    3. Kembar 3
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Kembar 4
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Lainnya
+            
+                </td>
             </tr>
             <tr>
                 <td width="30%">Anak ke</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(0, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">Tempat Dilahirkan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. RS/RB
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 6px;"></span>
+                    2. Puskesmas
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Polindes
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Rumah
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Lainnya
+                </td>
             </tr>
             <tr>
                 <td width="30%">Penolong Kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Dokter
+                    <span style="margin-right: 7px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 6px;"></span>
+                    2. Bidan/Perawat
+                    <span style="margin-right: 7px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 4px;"></span>
+                    3. Dukun
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Lainnya
+                </td>
             </tr>
             <tr>
                 <td width="30%">Sebab Lahir Mati</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(0, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">Yang Menentukan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Dokter
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Bidan/Perawat
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Tenaga Kes
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Kepolisian
+                    <span style="margin-right: 5px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Lainnya
+                </td>
             </tr>
             <tr>
                 <td width="30%">Tempat kelahiran</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(0, ""); ?></td>
             </tr>
         </table>
         </div>
@@ -651,7 +845,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">1. NIK Ayah Dari Suami</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">2. Nama Ayah Dari Suami</td>
@@ -663,7 +857,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">3. NIK Ibu Dari Suami</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">4. Nama Ibu Dari Suami</td>
@@ -675,7 +869,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">5. NIK Ayah Dari Istri</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">6. Nama Ayah Dari Istri</td>
@@ -687,7 +881,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">7. NIK Ibu Dari Istri</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">8. Nama Ibu Dari Istri</td>
@@ -699,49 +893,114 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">9. Status Perkawinan Sebelum Kawin</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Kawin
+                    <span style="margin-right: 17px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Belum Kawin
+                    <span style="margin-right: 18px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Cerai Hidup
+                    <span style="margin-right: 23px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Cerai Mati
+                    </td>
             </tr>
             <tr>
                 <td width="30%">10. Perkawinan Yang ke</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(2, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">11. Istri Yang ke- (bagi yang berpoligami)</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(2, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">12. Tanggal Pemberkatan Perkawinan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">13. Tanggal Melapor</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">14. Jam Pelaporan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 6px;"></span>
+                    :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">15. Agama</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Islam
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Kristen
+                    <span style="margin-right: 17px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Katholik
+                    <span style="margin-right: 13px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Hindu
+                    <span style="margin-right: 20px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Budha
+                    <span style="margin-right: 18px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    6. Konghuchu
+                </td>
             </tr>
             <tr>
                 <td width="30%">16. Kepercayaan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(1, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">17. Nama Organisasi Kepercayaan</td>
@@ -765,7 +1024,18 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">20. Tanggal Penetapan Pengadilan </td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">21. Nama Pemuka Agama/Kepercayaan</td>
@@ -819,7 +1089,17 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">1. Tanggal Perkawinan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">2. Nomor Akta Perkawinan</td>
@@ -831,7 +1111,18 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">3. Tanggal Akta Perkawinan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">4. Nama Pengadilan</td>
@@ -849,17 +1140,188 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">6. Tanggal Putusan Pengadilan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">7. Tanggal Pelaporan Perkawinan di Luar Negeri</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?></td>
             </tr>
         </table>
         </div>
 
+        <div class="container font-size jarak-kotak" style="border: 0.5px solid #000;">
+            <table class="table-input" style="border-collapse: collapse" width="100%">
+                <tr>
+                    <td colspan="3"><b> PERCERAIAN ATAU PEMBATALAN PERCERAIAN </b></td>
+                </tr> 
+                <tr>
+                    <td><b>Yang mengajukan perceraian/pembatalan perceraian***</b></td>
+                </tr>
+                <tr>
+                    <td width="30%">1.  Nomor Akta Perkawinan </td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">2.  Tanggal Akta Perkawinan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">3.  Tempat Pencatatan Perkawinan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">4. Nama Pengadilan </td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">5.  Tanggal Putusan Pengadilan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">6. Nomor Putusan Pengadilan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">7. Nomor Surat Keterangan Panitera Pengadilan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">8. Tanggal Surat Keterangan Panitera Pengadilan</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">9. Tanggal Melapor</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3"><b> Bagi Pemohon Pembatalan Perceraian Harap Mengisi Data di bawah ini :</b></td>
+                </tr>
+                <tr>
+                    <td width="30%">1. Nomor Akta Perceraian</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                    <?= generateDivBoxes(34, ""); ?></td>
+                </tr>
+                <tr>
+                    <td width="30%">2.  Tanggal Akta Perceraian</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30%">3.  Tanggal Pelaporan Perceraian dari Luar Negeri</td>
+                    <td width="1%" style="padding-right: 0px;">:</td>
+                    <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
+                        Tgl :
+                        <span style="margin-right: 11px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 3px;"></span>
+                        Bln :
+                        <span style="margin-right: 8px;"></span>
+                        <?= generateDivBoxes(2, ""); ?>
+                        <span style="margin-right: 2px;"></span>
+                        Thn :
+                        <span style="margin-right: 6px;"></span>
+                        <?= generateDivBoxes(4, ""); ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000;">
         <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -869,7 +1331,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">1. NIK</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                <?= generateDivBoxes(16, ""); ?></td>
             </tr>
             <tr>
                 <td width="30%">2. Nama Lengkap</td>
@@ -881,19 +1343,58 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">3. Tanggal Kematian</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    Tgl :
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    Bln :
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 2px;"></span>
+                    Thn :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(4, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">4. Pukul</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(2, ""); ?>
+                    <span style="margin-right: 6px;"></span>
+                    :
+                    <span style="margin-right: 6px;"></span>
+                    <?= generateDivBoxes(2, ""); ?>
+                </td>
             </tr>
             <tr>
                 <td width="30%">5. Sebab Kematian</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Sakit biasa/tua
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Wabah Penyakit
+                    <span style="margin-right: 14px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Kecelakaan
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Kriminalitas
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    5. Bunuh diri
+                    <span style="margin-right: 12px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    6. Lainnya
+                </td>
             </tr>
             <tr>
                 <td width="30%">6. Tempat kematian</td>
@@ -905,7 +1406,22 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">7. Yang menerangkan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                <?= generateDivBoxes(34, ""); ?></td>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    1. Dokter
+                    <span style="margin-right: 8px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    2. Tenaga Kesehatan
+                    <span style="margin-right: 14px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    3. Kepolisian
+                    <span style="margin-right: 11px;"></span>
+                    <?= generateDivBoxes(1, ""); ?>
+                    <span style="margin-right: 3px;"></span>
+                    4. Lainnya
+                </td>
             </tr>
         </table>
         </div>

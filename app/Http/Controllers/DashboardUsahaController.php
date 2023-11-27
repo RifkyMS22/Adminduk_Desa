@@ -24,7 +24,7 @@ class DashboardUsahaController extends Controller
      */
     public function create()
     {
-        $nikes = DataPenduduk::select('nik', 'nama', 'no_kk', 'jns_kelamin')->get(); // Gantilah 'nik' dan 'id' sesuai dengan kolom yang sesuai di tabel DataPenduduk
+        $nikes = DataPenduduk::select('nik', 'nama', 'no_kk', 'jns_kelamin','nama_ayah', 'agama', 'alamat', 'tmpt_lahir', 'tgl_lahir')->get(); // Gantilah 'nik' dan 'id' sesuai dengan kolom yang sesuai di tabel DataPenduduk
         return view('dashboard.administrasi.create_usaha', compact('nikes'));
     }
 
@@ -40,7 +40,8 @@ class DashboardUsahaController extends Controller
         'nama' => 'required',
         'jenis_kelamin' => 'required',
         'binti' => 'required',
-        'tmpt_tgl_lahir' => 'required',
+        'tmpt_lahir' => 'required',
+        'tgl_lahir' => 'required',
         'agama' => 'required',
         'warganegara' => 'required',
         'pekerjaan' => 'required',
@@ -55,7 +56,8 @@ class DashboardUsahaController extends Controller
     $usaha->nama = $request->input('nama');
     $usaha->jenis_kelamin = $request->input('jenis_kelamin');
     $usaha->binti = $request->input('binti');
-    $usaha->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+    $usaha->tmpt_lahir = $request->input('tmpt_lahir');
+    $usaha->tgl_lahir = $request->input('tgl_lahir');
     $usaha->agama = $request->input('agama');
     $usaha->warganegara = $request->input('warganegara');
     $usaha->pekerjaan = $request->input('pekerjaan');
@@ -98,7 +100,8 @@ class DashboardUsahaController extends Controller
             'alamat' => 'required',
             'jenis_kelamin' => 'required',
             'binti' => 'required',
-            'tmpt_tgl_lahir' => 'required',
+            'tmpt_lahir' => 'required',
+            'tgl_lahir' => 'required',
             'agama' => 'required',
             'warganegara' => 'required',
             'pekerjaan' => 'required',

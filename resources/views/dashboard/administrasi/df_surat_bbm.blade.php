@@ -15,7 +15,8 @@
             <th scope="col">NIK</th>
             <th scope="col">No KK</th>
             <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Tempat, tanggal Lahir</th>
+            <th scope="col">Tempat Lahir</th>
+            <th scope="col">Tanggal Lahir</th>
             <th scope="col">Pekerjaan</th>
             <th scope="col">Alamat</th>
             <th scope="col">Alamat Usaha</th>
@@ -34,7 +35,8 @@
                 <td>{{ $rekomendasiBbm->nik }}</td>
                 <td>{{ $rekomendasiBbm->no_kk }}</td>
                 <td>{{ $rekomendasiBbm->jenis_kelamin}}</td>
-                <td>{{ $rekomendasiBbm->tmpt_tgl_lahir}}</td>
+                <td>{{ $rekomendasiBbm->tmptlahir}}</td>
+                <td>{{ $rekomendasiBbm->tgl_lahir}}</td>
                 <td>{{ $rekomendasiBbm->pekerjaan}}</td>
                 <td>{{ $rekomendasiBbm->alamat}}</td>
                 <td>{{ $rekomendasiBbm->alamat_usaha}}</td>

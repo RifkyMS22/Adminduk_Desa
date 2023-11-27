@@ -13,7 +13,8 @@
         <tr>
             <th scope="col">Nama</th>
             <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Tempat, tanggal Lahir</th>
+            <th scope="col">Tempat Lahir</th>
+            <th scope="col">Tanggal Lahir</th>
             <th scope="col">Warganegara</th>
             <th scope="col">Agama</th>
             <th scope="col">Pekerjaan</th>

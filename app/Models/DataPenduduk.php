@@ -10,7 +10,8 @@ class DataPenduduk extends Model
     use HasFactory;
 
     protected $table = 'data_penduduk';
-    // protected $primaryKey = 'nik';
+    protected $primaryKey = 'nik';
+    
     protected $fillable = [
         'nik',
         'nama',

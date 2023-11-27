@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('binti');
-            $table->string('tmpt_tgl_lahir');
+            $table->string('tmpt_lahir');
+            $table->string('tgl_lahir');
             $table->string('agama');
             $table->string('warganegara');
             $table->string('pekerjaan');

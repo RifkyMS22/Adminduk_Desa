@@ -15,7 +15,8 @@
                 <th scope="col">NIK</th>
                 <th scope="col">No KK</th>
                 <th scope="col">Nama Ayah</th>
-                <th scope="col">Tempat, tanggal Lahir</th>
+                <th scope="col">Tempat Lahir</th>
+                <th scope="col">Tanggal Lahir</th>
                 <th scope="col">Agama</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Warganegara</th>
@@ -33,7 +34,8 @@
                 <td>{{ $domisili->nik }}</td>
                 <td>{{ $domisili->no_kk }}</td>
                 <td>{{ $domisili->binti }}</td>
-                <td width="170">{{ $domisili->tmpt_tgl_lahir }}</td>
+                <td>{{ $domisili->tmpt_lahir }}</td>
+                <td>{{ $domisili->tgl_lahir }}</td>
                 <td>{{ $domisili->agama }}</td>
                 <td>{{ $domisili->jenis_kelamin }}</td>
                 <td>{{ $domisili->warganegara }}</td>

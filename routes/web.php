@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrasiController;
@@ -29,9 +30,9 @@ Route::get('/dashboard', function(){
 Route::get('/dashboard/penduduk', [DashboardPendudukController::class, 'index'])->name('dashboard.penduduk.index');
 Route::get('/creatependuduk', [DashboardPendudukController::class, 'create'])->name('dashboard.penduduk.create');
 Route::post('/dashboard/penduduk', [DashboardPendudukController::class, 'store'])->name('dashboard.penduduk.store');
-Route::get('/dashboard/penduduk/{penduduk}/edit', [DashboardPendudukController::class, 'edit'])->name('dashboard.penduduk.edit');
-Route::put('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'update'])->name('dashboard.penduduk.update');
-Route::delete('/dashboard/penduduk/{penduduk}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
+Route::get('/dashboard/penduduk/{nik}/edit', [DashboardPendudukController::class, 'edit'])->name('dashboard.penduduk.edit');
+Route::put('/dashboard/penduduk/{nik}', [DashboardPendudukController::class, 'update'])->name('dashboard.penduduk.update');
+Route::delete('/dashboard/penduduk/{nik}', [DashboardPendudukController::class, 'destroy'])->name('dashboard.penduduk.destroy');
 
 // Route untuk Keterangan Umum
 Route::get('/dashboard/df_surat_umum', [DashboardKetUmumController::class, 'index'])->name('dashboard.keteranganumum.index');
@@ -50,7 +51,7 @@ Route::get('/dashboard/administrasi/{id}/edit', [DashboardDomisiliController::cl
 Route::put('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 'update'])->name('dashboard.administrasi.update');
 Route::delete('/dashboard/administrasi/{id}', [DashboardDomisiliController::class, 'destroy'])->name('dashboard.administrasi.destroy');
 Route::get('/dashboard/administrasi/domisili/export/{id}', [DashboardDomisiliController::class, 'export'])->name('dashboard.administrasi.domisili.export');
-Route::get('/get-data-by-nik/{nik}', [KetDomisiliController::class, 'getDataByNIK']);
+Route::get('/get-data-by-nik/{nik}', [DashboardDomisiliController::class, 'getDataByNIK']);
 
 //Route untuk Keterangan Usaha
 Route::get('/dashboard/df_surat_usaha', [DashboardUsahaController::class, 'index'])->name('dashboard.usaha.index');
@@ -72,6 +73,7 @@ Route::get('/dashboard/bbm/administrasi/{id}/edit', [DashboardRekBbmController::
 Route::put('/dashboard/bbm/adminnistrasi/{id}', [DashboardRekBbmController::class, 'update'])->name('dashboard.bbm.update');
 Route::delete('/dashboard/bbm/administrasi/{id}', [DashboardRekBbmController::class, 'destroy'])->name('dashboard.bbm.destroy');
 Route::get('/dashboard/bbm/administrasi/export/{id}', [DashboardRekBbmController::class, 'export'])->name('dashboard.bbm.export');
+Route::get('/get-data-by-nik{nik}', [DashboardRekBbmController::class, 'getDataByNik']);
 
 //Route untuk kelahiran
 Route::get('/dashboard/kelahiran', [DashboardKelahiranController::class, 'index'])->name('dashboard.adminduk.index');
@@ -81,6 +83,9 @@ Route::get('/dashboard/adminduk/{id}/edit', [DashboardKelahiranController::class
 Route::put('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'update'])->name('dashboard.adminduk.update');
 Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'destroy'])->name('dashboard.adminduk.destroy_kelahiran');
 Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::class, 'export'])->name('dashboard.adminduk.export');
+
+//Route untuk Berita
+Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
 
 //Route untuk Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');

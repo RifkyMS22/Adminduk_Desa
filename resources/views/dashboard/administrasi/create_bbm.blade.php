@@ -14,9 +14,14 @@
                         <form method="POST" action="{{ route('dashboard.bbm.store') }}">
                             @csrf
 
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="nik">NIK</label>
-                                <input id="nik" type="text" class="form-control" name="nik" required>
+                                <select id="nik" class="form-control" name="nik" required>
+                                    <option value="" disabled selected>Pilih NIK atau masukkan NIK baru</option>
+                                    @foreach ($nikes as $data)
+                                    <option value="{{ $data->nik }}">{{ $data->nik }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -33,8 +38,12 @@
                                 <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
                             </div>
                             <div class="form-group">
-                                <label for="tmpt_tgl_lahir">Tempat Tanggal Lahir</label>
-                                <input id="tmpt_tgl_lahir" type="text" class="form-control" name="tmpt_tgl_lahir" required>
+                                <label for="tmpt_lahir">Tempat Lahir</label>
+                                <input id="tmpt_lahir" type="text" class="form-control" name="tmpt_lahir" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_lahir">Tanggal Lahir</label>
+                                <input id="tgl_lahir" type="text" class="form-control" name="tgl_lahir" required>
                             </div>
                             <div class="form-group">
                                 <label for="pekerjaan">Pekerjaan</label>
@@ -81,4 +90,38 @@
             </div>
         </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        // Inisialisasi Select2 di elemen 'nik'
+        $('#nik').select2({
+            theme: 'bootstrap-5'
+        });
+
+        // Menggunakan event 'change' pada elemen 'nik'
+        $('#nik').on('change', function() {
+            var selectedNik = $(this).val();
+            $.ajax({
+                url: '/get-data-by-nik/' + selectedNik,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $('#no_kk').val(data.no_kk);
+                    $('#nama').val(data.nama);
+                    $('#jenis_kelamin').val(data.jns_kelamin);
+                    $('#jns_kelamin').val(data.jns_kelamin);
+                    $('#nama_ayah').val(data.nama_ayah);
+                    $('#agama').val(data.agama);
+                    $('#pekerjaan').val(data.pekerjaan);
+                    $('#alamat').val(data.alamat);
+                    $('#tmpt_lahir').val(data.tmpt_lahir);
+                    $('#tgl_lahir').val(data.tgl_lahir);
+                },
+                error: function() {
+                    console.error('Error fetching data.');
+                }
+            });
+        });
+    });
+</script>
 @endsection

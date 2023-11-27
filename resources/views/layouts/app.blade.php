@@ -14,7 +14,7 @@
 
     @include('layouts.navbar')
 
-    <div class="container mt-4">
+    <div class="container mt-5 mb-5">
         @yield('container')
     </div>
 

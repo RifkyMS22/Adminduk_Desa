@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RekomendasiBbm;
-use Illuminate\Http\Request;
 use Dompdf\Dompdf;
+use App\Models\DataPenduduk;
+use Illuminate\Http\Request;
+use App\Models\RekomendasiBbm;
 use Illuminate\Support\Facades\View;
 
 class DashboardRekBbmController extends Controller
@@ -24,7 +25,8 @@ class DashboardRekBbmController extends Controller
      */
     public function create()
     {
-        return view ('dashboard.administrasi.create_bbm');
+        $nikes = DataPenduduk::select('nik', 'nama', 'no_kk', 'jns_kelamin','nama_ayah', 'agama', 'alamat', 'tmpt_lahir', 'tgl_lahir')->get();
+        return view ('dashboard.administrasi.create_bbm', compact('nikes'));
     }
 
     /**
@@ -37,7 +39,8 @@ class DashboardRekBbmController extends Controller
         $rekomendasiBbm->nik = $request->input('nik');
         $rekomendasiBbm->no_kk = $request->input('no_kk');
         $rekomendasiBbm->jenis_kelamin = $request->input('jenis_kelamin');
-        $rekomendasiBbm->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+        $rekomendasiBbm->tmpt_lahir = $request->input('tmpt_lahir');
+        $rekomendasiBbm->tgl_lahir = $request->input('tgl_lahir');
         $rekomendasiBbm->pekerjaan = $request->input('pekerjaan');
         $rekomendasiBbm->alamat = $request->input('alamat');
         $rekomendasiBbm->alamat_usaha = $request->input('alamat_usaha');
@@ -80,7 +83,8 @@ class DashboardRekBbmController extends Controller
             'nik' => 'required',
             'no_kk' => 'required',
             'jenis_kelamin' => 'required',
-            'tmpt_tgl_lahir' => 'required',
+            'tmpt_lahir' => 'required',
+            'tgl_lahir' => 'required',
             'pekerjaan' => 'required',
             'alamat' => 'required',
             'alamat_usaha' => 'required',
@@ -126,5 +130,17 @@ class DashboardRekBbmController extends Controller
         $pdf->render();
 
         return $pdf->stream();
+    }
+
+    public function getDataByNik($nik)
+    {
+        // Lakukan pencarian data berdasarkan NIK
+        $data = DataPenduduk::where('nik', $nik)->first();
+
+        if ($data) {
+            return response()->json($data);
+        } else {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
     }
 }

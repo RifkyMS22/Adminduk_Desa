@@ -37,7 +37,8 @@ class DashboardKetUmumController extends Controller
         $keteranganUmum->nik = $request->input('nik');
         $keteranganUmum->no_kk = $request->input('no_kk');
         $keteranganUmum->jenis_kelamin = $request->input('jenis_kelamin');
-        $keteranganUmum->tmpt_tgl_lahir = $request->input('tmpt_tgl_lahir');
+        $keteranganUmum->tmpt_lahir = $request->input('tmpt_lahir');
+        $keteranganUmum->tgl_lahir = $request->input('tgl_lahir');
         $keteranganUmum->warganegara = $request->input('warganegara');
         $keteranganUmum->agama = $request->input('agama');
         $keteranganUmum->pekerjaan = $request->input('pekerjaan');
@@ -81,7 +82,8 @@ class DashboardKetUmumController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
             'jenis_kelamin'  => 'required',
-            'tmpt_tgl_lahir'  => 'required',
+            'tmpt_lahir'  => 'required',
+            'tgl_lahir'  => 'required',
             'warganegara'  => 'required',
             'agama'  => 'required',
             'pekerjaan'  => 'required',
