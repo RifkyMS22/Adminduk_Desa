@@ -24,7 +24,7 @@
                     <a class="nav-link" href="/layanan">Layanan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/berita">Berita</a>
+                    <a class="nav-link" href="/berita/index">Berita</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/profile">Profile</a>

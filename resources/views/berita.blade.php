@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('container')
 <br>
@@ -41,4 +41,6 @@
         </div>
     </div>
 </section>
-@endsection
+@endsection --}}
+
+ini halaman berita

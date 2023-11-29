@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\DashboardUsahaController;
+use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\DashboardRekBbmController;
 use App\Http\Controllers\DashboardKetUmumController;
 use App\Http\Controllers\DashboardDomisiliController;
@@ -85,7 +86,11 @@ Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 
 Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::class, 'export'])->name('dashboard.adminduk.export');
 
 //Route untuk Berita
-Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
+
+Route::get('/dashboard/berita/index', [DashboardBeritaController::class, 'index'])->name('dashboard.berita.index');
+Route::get('/dashboard/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
+Route::post('/dashboard/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
 
 //Route untuk Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
