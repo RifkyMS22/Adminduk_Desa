@@ -5,61 +5,63 @@
     <h1 class="h2">Kelahiran Anak Desa Palar</h1>
 </div>
 <div class="btn-group">
-    <a href="{{ route('dashboard.adminduk.create_kelahiran') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
+    <a href="{{ route('dashboard.adminduk.create_kelahiran') }}" class="btn btn-primary active"
+        aria-current="page">Tambah</a>
 </div>
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
+<div class="table-responsive small mt-4">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Nama Bayi</th>
                 <th scope="col">Nik Bayi</th>
-                <th scope="col">Nama Bayi</th>
-                {{-- <th scope="col">Tempat Di Lahirkan</th>
+                <th scope="col">Warganegara Bayi</th>
+                <th scope="col">Tempat Di Lahirkan</th>
                 <th scope="col">Tempat Kelahiran</th>
-                <th scope="col">Hari Dan Tanggal</th>
+                <th scope="col">Tanggal</th>
                 <th scope="col">Pukul</th>
                 <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Anak Ke</th>
-                <th scope="col">Penolong Kelahiran</th>
-                <th scope="col">Berat Bayi</th>
-                <th scope="col">Panjang Bayi</th> --}}
-                <th scope="col">Aksi</th>
+                <th scope="col" class="text-center">Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($kelahiran as $kelahiran)
-            <tr>
-                {{-- <td width="200">{{ $kelahiran->nama_bayi }}</td> --}}
-                <td>{{ $kelahiran->nama_bayi }}</td>
-                <td>{{ $kelahiran->nik_bayi }}</td>
-                <td>{{ $kelahiran->warganegara_bayi }}</td>
-                {{-- <td width="170">{{ $kelahiran->tmpt_tgl_lahir }}</td>
-                <td>{{ $kelahiran->agama }}</td>
-                <td>{{ $kelahiran->jenis_kelamin }}</td>
-                <td>{{ $kelahiran->warganegara }}</td>
-                <td>{{ $kelahiran->alamat }}</td>
-                <td>{{ $kelahiran->pekerjaan }}</td>
-                <td>{{ $kelahiran->no_surat }}</td>
-                <td>{{ $kelahiran->keperluan }}</td> --}}
-                <td width="100">
-                    <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id . '/edit') }}" class="badge bg-warning">
-                        <i data-feather="edit"></i>
-                    </a>
-                    <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $kelahiran->id }}').submit();">
-                        <i data-feather="x-circle"></i>
-                    </a>
-                    <a href="{{ url('/dashboard/adminduk/export/' . $kelahiran->id) }}" class="badge bg-primary" target="_blank">
-                        <i data-feather="printer"></i>
-                    </a>
-                    <form id="delete-form-{{ $kelahiran->id }}" action="{{ url('/dashboard/adminduk/' . $kelahiran->id) }}" method="POST" style="display: none;">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                </td>
-            </tr>
+            @foreach($kelahiran as $kelahiran)
+                <tr>
+                    <td>{{ $kelahiran->nama_bayi }}</td>
+                    <td>{{ $kelahiran->nik_bayi }}</td>
+                    <td>{{ $kelahiran->warganegara_bayi }}</td>
+                    <td>{{ $kelahiran->tmpt_dilahirkan }}</td>
+                    <td>{{ $kelahiran->tmpt_kelahiran }}</td>
+                    <td>{{ $kelahiran->tgl_lahir }}</td>
+                    <td>{{ $kelahiran->jam }}</td>
+                    <td>{{ $kelahiran->jns_kelamin }}</td>
+                    <td width="100">
+                        <div class="btn-group" role="group">
+                            <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id . '/edit') }}"
+                                class="btn btn-sm btn-warning">
+                                <i data-feather="edit"></i>
+                            </a>
+                            <a href="{{ url('/dashboard/adminduk/export/' . $kelahiran->id) }}"
+                                class="btn btn-primary btn-sm" target="_blank">
+                                <i data-feather="printer"></i>
+                            </a>
+                            <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id) }}"
+                                class="btn btn-danger btn-sm"
+                                onclick="event.preventDefault(); document.getElementById('delete-form-{{ $kelahiran->id }}').submit();">
+                                <i data-feather="x-circle"></i>
+                            </a>
+                        </div>
+                        <form id="delete-form-{{ $kelahiran->id }}"
+                            action="{{ url('/dashboard/adminduk/' . $kelahiran->id) }}"
+                            method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    </td>
+                </tr>
             @endforeach
             <script>
                 feather.replace()
+
             </script>
         </tbody>
     </table>

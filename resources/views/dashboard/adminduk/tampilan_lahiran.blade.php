@@ -1,13 +1,3 @@
-<?php
-function generateDivBoxes($numBoxes, $content) {
-    $output = '';
-    for ($i = 0; $i < $numBoxes; $i++) {
-        $output .= '<div class="box">' . (isset($content[$i]) ? htmlspecialchars($content[$i]) : '') . '</div>';
-    }
-    return $output;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +7,7 @@ function generateDivBoxes($numBoxes, $content) {
     <title>Kelahiran</title>
     <style>
         .table-input tr td:first-child {
-                
+
                 vertical-align: top
         }
         .table-input tr td:nth-child(2) {
@@ -36,8 +26,8 @@ function generateDivBoxes($numBoxes, $content) {
             text-align: center;
             line-height: 13px;
             margin: 0.2px;
-          
-            
+
+
         }
         .td-inputt .box {
             border: 0.2px solid #000;
@@ -71,7 +61,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="5%"></td>
             </tr>
         </table>
-        
+
     </div>
         <div class="container font-size jarak-kotak">
         <table width="100%">
@@ -119,7 +109,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -130,7 +120,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -141,7 +131,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -152,7 +142,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -163,7 +153,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -174,7 +164,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -185,7 +175,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
                 <tr>
                     <td class="td-inputt" width="100%" style="display: flex; flex-wrap: wrap;">
@@ -196,7 +186,7 @@ function generateDivBoxes($numBoxes, $content) {
                         <?= generateDivBoxes(1, ""); ?>
                     </td>
                     <td width="50%">Nama</td>
-                    
+
                 </tr>
 
             </table>
@@ -258,7 +248,7 @@ function generateDivBoxes($numBoxes, $content) {
             </tr>
         </table>
         </div>
-        
+
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000;">
         <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -346,7 +336,7 @@ function generateDivBoxes($numBoxes, $content) {
             </tr>
         </table>
         </div>
-        
+
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000; ">
             <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -418,7 +408,7 @@ function generateDivBoxes($numBoxes, $content) {
             </tr>
         </table>
         </div>
-        
+
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000; ">
             <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -456,7 +446,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <?= generateDivBoxes(4, ""); ?>
                 </td>
             </tr>
-            
+
             <tr>
                 <td width="30%">Kewarganegaraan</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
@@ -485,7 +475,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">Tanggal Lahir Ibu</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                
+
                     Tgl : <span style="margin-right: 20px;"></span>
                     <?= generateDivBoxes(2, ""); ?>
                     <span style="margin-right: 20px;"></span> <!-- Elemen pembatas -->
@@ -504,7 +494,7 @@ function generateDivBoxes($numBoxes, $content) {
             </tr>
         </table>
         </div>
-        
+
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000; ">
         <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -522,7 +512,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
                 <?= generateDivBoxes(34, ""); ?>
                 </td>
-                
+
             </tr>
             <tr>
                 <td width="30%">3. Jenis Kelamin</td>
@@ -535,7 +525,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <?= generateDivBoxes(1, ""); ?>
                     <span style="margin-right: 3px;"></span>
                     2. Perempuan
-                
+
                 </td>
             </tr>
             <tr>
@@ -589,7 +579,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <span style="margin-right: 3px;"></span>
                     <?= generateDivBoxes(4, ""); ?>
                     <span style="margin-right: 3px;"></span>
-            
+
                 </td>
             </tr>
             <tr>
@@ -621,7 +611,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <?= generateDivBoxes(1, ""); ?>
                     <span style="margin-right: 3px;"></span>
                     5. Lainnya
-            
+
                 </td>
             </tr>
             <tr>
@@ -649,7 +639,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <?= generateDivBoxes(1, ""); ?>
                     <span style="margin-right: 3px;"></span>
                     4. Lainnya
-            
+
                 </td>
             </tr>
             <tr>
@@ -657,7 +647,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
                 <?= generateDivBoxes(3, ""); ?>
-                    <span style="margin-right: 3px;"></span>    
+                    <span style="margin-right: 3px;"></span>
                     Kg
                 </td>
             </tr>
@@ -672,7 +662,7 @@ function generateDivBoxes($numBoxes, $content) {
             </tr>
         </table>
         </div>
-        
+
         <div class="container font-size jarak-kotak" style="border: 0.5px solid #000; ">
         <table class="table-input" style="border-collapse: collapse" width="100%">
             <tr>
@@ -704,7 +694,7 @@ function generateDivBoxes($numBoxes, $content) {
                 <td width="30%">Tanggal Lahir Mati</td>
                 <td width="1%" style="padding-right: 0px;">:</td>
                 <td class="td-input" width="100%" style="display: flex; flex-wrap: wrap;">
-                
+
                 Tgl :
                 <span style="margin-right: 3px;"></span>
                 <?= generateDivBoxes(2, ""); ?>
@@ -741,7 +731,7 @@ function generateDivBoxes($numBoxes, $content) {
                     <?= generateDivBoxes(1, ""); ?>
                     <span style="margin-right: 3px;"></span>
                     5. Lainnya
-            
+
                 </td>
             </tr>
             <tr>
@@ -1175,7 +1165,7 @@ function generateDivBoxes($numBoxes, $content) {
             <table class="table-input" style="border-collapse: collapse" width="100%">
                 <tr>
                     <td colspan="3"><b> PERCERAIAN ATAU PEMBATALAN PERCERAIAN </b></td>
-                </tr> 
+                </tr>
                 <tr>
                     <td><b>Yang mengajukan perceraian/pembatalan perceraian***</b></td>
                 </tr>
@@ -2054,7 +2044,7 @@ function generateDivBoxes($numBoxes, $content) {
         </table>
         </div>
 
-        
+
         <table width="100%">
             <tr>
                 <td align="center" width="30%">Mengetahui</td>

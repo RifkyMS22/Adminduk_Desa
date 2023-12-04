@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('warganegara_bayi');
             $table->string('kecamatan')->default('')->nullable();
             $table->string('kelurahan')->default('')->nullable();
+            $table->string('jns_kelamin')->default('')->nullable();
             $table->string('tmpt_dilahirkan')->default('')->nullable();
-            $table->string('tmpy_kelahiran')->default('')->nullable();
+            $table->string('tmpt_kelahiran')->default('')->nullable();
             $table->string('tgl_lahir')->default('')->nullable();
             $table->string('jam')->default('')->nullable();
-            $table->string('jns_kelamin')->default('')->nullable();
             $table->string('anak_ke')->default('')->nullable();
+            $table->string('jns_kelahiran')->default('')->nullable();
             $table->string('penolong_lahir')->default('')->nullable();
             $table->string('brt_bayi')->default('')->nullable();
             $table->string('pjg_bayi')->default('')->nullable();
@@ -50,10 +51,20 @@ return new class extends Migration
             $table->string('nama_s1')->default('')->nullable();
             $table->string('no_kk_s1')->default('')->nullable();
             $table->string('warganegara_s1')->default('')->nullable();
+
             $table->string('nik_s2')->default('')->nullable();
             $table->string('nama_s2')->default('')->nullable();
             $table->string('no_kk_s2')->default('')->nullable();
             $table->string('warganegara_s2')->default('')->nullable();
+
+             //data pelapor
+             $table->string('nik_pelapor')->default('')->nullable();
+             $table->string('nama_pelapor')->default('')->nullable();
+             $table->string('email_pelapor')->default('')->nullable();
+             $table->string('no_hp_pelapor')->default('')->nullable();
+             $table->string('no_kk_pelapor')->default('')->nullable();
+             $table->string('warganegara_pelapor')->default('')->nullable();
+
             $table->timestamps();
         });
     }

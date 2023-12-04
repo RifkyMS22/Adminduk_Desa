@@ -15,7 +15,7 @@ class DashboardKelahiranController extends Controller
     public function index()
     {
         $kelahiran = Kelahiran::latest('updated_at')->get();
-        return view ('dashboard.adminduk.kelahiran', ['kelahiran' => $kelahiran]);
+        return view('dashboard.adminduk.kelahiran', ['kelahiran' => $kelahiran]);
     }
 
     /**
@@ -23,7 +23,7 @@ class DashboardKelahiranController extends Controller
      */
     public function create()
     {
-        return view ('dashboard.adminduk.create_kelahiran');
+        return view('dashboard.adminduk.create_kelahiran');
     }
 
     /**
@@ -37,12 +37,13 @@ class DashboardKelahiranController extends Controller
         $kelahiran->warganegara_bayi = $request->input('warganegara_bayi');
         $kelahiran->kecamatan = $request->input('kecamatan');
         $kelahiran->kelurahan = $request->input('kelurahan');
+        $kelahiran->jns_kelamin = $request->input('jns_kelamin');
         $kelahiran->tmpt_dilahirkan = $request->input('tmpt_dilahirkan');
-        $kelahiran->tmpy_kelahiran = $request->input('tmpy_kelahiran');
+        $kelahiran->tmpt_kelahiran = $request->input('tmpt_kelahiran');
         $kelahiran->tgl_lahir = $request->input('tgl_lahir');
         $kelahiran->jam = $request->input('jam');
-        $kelahiran->jns_kelamin = $request->input('jns_kelamin');
         $kelahiran->anak_ke = $request->input('anak_ke');
+        $kelahiran->jns_kelahiran = $request->input('jns_kelahiran');
         $kelahiran->penolong_lahir = $request->input('penolong_lahir');
         $kelahiran->brt_bayi = $request->input('brt_bayi');
         $kelahiran->pjg_bayi = $request->input('pjg_bayi');
@@ -69,9 +70,16 @@ class DashboardKelahiranController extends Controller
         $kelahiran->nama_s2 = $request->input('nama_s2');
         $kelahiran->no_kk_s2 = $request->input('no_kk_s2');
         $kelahiran->warganegara_s2 = $request->input('warganegara_s2');
+
+        $kelahiran->nik_pelapor = $request->input('nik_pelapor');
+        $kelahiran->nama_pelapor = $request->input('nama_pelapor');
+        $kelahiran->email_pelapor = $request->input('email_pelapor');
+        $kelahiran->no_hp_pelapor = $request->input('no_hp_pelapor');
+        $kelahiran->no_kk_pelapor = $request->input('no_kk_pelapor');
+        $kelahiran->warganegara_pelapor = $request->input('warganegara_pelapor');
         $kelahiran->save();
 
-        return redirect()->route('dashboard.adminduk.index')->with('success', 'Data penduduk berhasil ditambahkan');
+        return redirect()->route('dashboard.adminduk.index')->with('success', 'Data kelahiran berhasil ditambahkan');
     }
 
     /**
@@ -85,7 +93,7 @@ class DashboardKelahiranController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    
+
     public function edit(string $id)
     {
         $kelahiran  = Kelahiran::where('id', '=', $id)->firstOrFail();
@@ -171,12 +179,14 @@ class DashboardKelahiranController extends Controller
             ]
         ]);
 
-        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
-        $pdf->getDomPDF()->setHttpContext($contxt);
+        return view('dashboard.adminduk.tampilan_lahiran', ['kelahiran' => $kelahiran]);
 
-        $pdf->loadHtml(View::make('dashboard.adminduk.tampilan_lahiran')->with('kelahiran', $kelahiran)->render());
-        $pdf->render();
+        // $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        // $pdf->getDomPDF()->setHttpContext($contxt);
 
-        return $pdf->stream();
+        // $pdf->loadHtml(View::make('dashboard.adminduk.tampilan_lahiran')->with('kelahiran', $kelahiran)->render());
+        // $pdf->render();
+
+        // return $pdf->stream();
     }
 }

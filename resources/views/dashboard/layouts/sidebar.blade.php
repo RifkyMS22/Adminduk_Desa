@@ -5,7 +5,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-      
+
       <ul class="nav flex-column">
         <li class="nav-item">
           <a class="nav-link" href="/dashboard">
@@ -13,7 +13,7 @@
             Dashboard
           </a>
         </li>
-        
+
         <li class="nav-item">
           <a class="nav-link d-flex align-items-center gap-2 active" href="/dashboard/penduduk">
             <svg class="bi"><use xlink:href="#file-earmark"/></svg>
@@ -33,7 +33,7 @@
             <li><a class="dropdown-item" href="/dashboard/df_surat_bbm">Rekomendasi BBM</a></li>
           </ul>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 active" href="#" id="sidebarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <svg class="bi"><use xlink:href="#file-earmark"/></svg>
@@ -46,6 +46,7 @@
             <li><a class="dropdown-item" href="#">Pindah Pergi</a></li>
           </ul>
         </li>
+      </ul>
 
 
 
