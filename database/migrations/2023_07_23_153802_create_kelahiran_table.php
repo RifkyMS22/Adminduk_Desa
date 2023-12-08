@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kelahiran', function (Blueprint $table) {
             $table->id();
             //data bayi
-            $table->string('nik_bayi');
+            $table->string('nik_bayi')->default('')->nullable();
             $table->string('nama_bayi');
             $table->string('warganegara_bayi');
             $table->string('kecamatan')->default('')->nullable();

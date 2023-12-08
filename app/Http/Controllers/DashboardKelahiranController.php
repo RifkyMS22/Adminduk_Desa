@@ -169,7 +169,6 @@ class DashboardKelahiranController extends Controller
     public function export(string $id)
     {
         $kelahiran  = Kelahiran::where('id', '=', $id)->firstOrFail();
-        // return view('dashboard.administrasi.tampilan_domisili', ['domisili'=> $domisili]);
         $pdf = new Dompdf();
         $contxt = stream_context_create([
             'ssl' => [
@@ -179,14 +178,14 @@ class DashboardKelahiranController extends Controller
             ]
         ]);
 
-        return view('dashboard.adminduk.tampilan_lahiran', ['kelahiran' => $kelahiran]);
+        // return view('dashboard.adminduk.tampilan_lahiran', ['kelahiran' => $kelahiran]);
 
-        // $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
-        // $pdf->getDomPDF()->setHttpContext($contxt);
+        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
 
-        // $pdf->loadHtml(View::make('dashboard.adminduk.tampilan_lahiran')->with('kelahiran', $kelahiran)->render());
-        // $pdf->render();
+        $pdf->loadHtml(View::make('dashboard.adminduk.tampilan_lahiran')->with('kelahiran', $kelahiran)->render());
+        $pdf->render();
 
-        // return $pdf->stream();
+        return $pdf->stream();
     }
 }
