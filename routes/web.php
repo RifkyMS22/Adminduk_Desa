@@ -21,7 +21,6 @@ Route::get('/datapenduduk', [DataPendudukController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/layanan', [LayananController::class, 'index']);
 
 Route::get('/dashboard', function(){
     return view ('dashboard.index');
@@ -87,10 +86,18 @@ Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::cla
 
 //Route untuk Berita
 Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
+Route::get('/berita/show-berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+
 
 Route::get('/dashboard/berita/index', [DashboardBeritaController::class, 'index'])->name('dashboard.berita.index');
 Route::get('/dashboard/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
 Route::post('/dashboard/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
+
+
+//Route untuk layanan
+Route::get('/layanan/index', [LayananController::class, 'index'])->name('layanan.index');
+
+
 
 //Route untuk Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');

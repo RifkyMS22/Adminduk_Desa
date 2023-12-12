@@ -36,9 +36,11 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Berita $berita)
+    public function show($id)
     {
-        //
+        $berita = Berita::find($id);
+
+        return view('Berita.show-berita', ['berita' => $berita]);
     }
 
     /**

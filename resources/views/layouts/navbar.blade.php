@@ -21,7 +21,7 @@
                     </ul>
                   </li> --}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/layanan">Layanan</a>
+                    <a class="nav-link" href="/layanan/index">Layanan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/berita/index">Berita</a>

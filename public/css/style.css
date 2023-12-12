@@ -1,3 +1,15 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1;
+}
+
+/* Tambahkan CSS untuk navbar */
 .navbar {
     background-color: #333;
     height: 50px;
@@ -28,4 +40,20 @@
 
 .navbar li a:active {
     background-color: #4caf50;
+}
+
+/* Tambahkan CSS untuk footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.footer-wrapper {
+    flex-shrink: 0;
+    position: sticky;
+    bottom: 0;
 }
