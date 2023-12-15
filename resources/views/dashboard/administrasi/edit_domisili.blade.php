@@ -38,8 +38,12 @@
                                 <input id="binti" type="text" class="form-control" name="binti" value="{{ $domisili->binti }}" required>
                             </div>
                             <div class="form-group">
-                                <label for="tmpt_tgl_lahir">Tempat Tanggal Lahir</label>
-                                <input id="tmpt_tgl_lahir" type="text" class="form-control" name="tmpt_tgl_lahir" value="{{ $domisili->tmpt_tgl_lahir }}" required>
+                                <label for="tmpt_lahir">Tempat Lahir</label>
+                                <input id="tmpt_lahir" type="text" class="form-control" name="tmpt_lahir" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="tgl_lahir">Tanggal Lahir</label>
+                                <input id="tgl_lahir" type="text" class="form-control" name="tgl_lahir" required>
                             </div>
                             <div class="form-group">
                                 <label for="agama">Agama</label>

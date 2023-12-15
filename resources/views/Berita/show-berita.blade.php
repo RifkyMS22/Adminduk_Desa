@@ -9,7 +9,7 @@
             <img src="{{ asset('storage/gambar/' . $berita->gambar) }}" class="mx-auto d-block" style="width: 300px; height: auto;" alt="{{ $berita->judul }}">
             <p class="text-muted">{{ $berita->created_at->format('d F Y') }}</p>
             <p>{{ $berita->isi }}</p>
-            <a href="/berita/index" class="btn btn-primary">Kembali</a>
+            <a href="/" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 </section>

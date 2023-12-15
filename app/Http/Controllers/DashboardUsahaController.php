@@ -16,7 +16,7 @@ class DashboardUsahaController extends Controller
     public function index()
     {
         $usaha =  Usaha::latest('updated_at')->get();
-        return view ('dashboard.administrasi.df_surat_usaha');
+        return view ('dashboard.administrasi.df_surat_usaha', ['usaha' => $usaha]);
     }
 
     /**
@@ -34,21 +34,21 @@ class DashboardUsahaController extends Controller
      */
     public function store(Request $request)
 {
-    $validatedData = $request->validate([
-        'nik' => 'required',
-        'no_kk' => 'required',
-        'nama' => 'required',
-        'jenis_kelamin' => 'required',
-        'binti' => 'required',
-        'tmpt_lahir' => 'required',
-        'tgl_lahir' => 'required',
-        'agama' => 'required',
-        'warganegara' => 'required',
-        'pekerjaan' => 'required',
-        'alamat' => 'required',
-        'no_surat' => 'required',
-        'keperluan' => 'required',
-    ]);
+    // $validatedData = $request->validate([
+    //     'nik' => 'required',
+    //     'no_kk' => 'required',
+    //     'nama' => 'required',
+    //     'jenis_kelamin' => 'required',
+    //     'binti' => 'required',
+    //     'tmpt_lahir' => 'required',
+    //     'tgl_lahir' => 'required',
+    //     'agama' => 'required',
+    //     'warganegara' => 'required',
+    //     'pekerjaan' => 'required',
+    //     'alamat' => 'required',
+    //     'no_surat' => 'required',
+    //     'keperluan' => 'required',
+    // ]);
 
     $usaha = new Usaha();
     $usaha->nik = $request->input('nik'); // Mengambil NIK yang dipilih dari dropdown
@@ -66,7 +66,7 @@ class DashboardUsahaController extends Controller
     $usaha->keperluan = $request->input('keperluan');
     $usaha->save();
 
-    return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil ditambahkan');
+    return redirect()->route('dashboard.usaha.index')->with('success', 'Data penduduk berhasil ditambahkan');
 }
 
 
@@ -85,7 +85,7 @@ class DashboardUsahaController extends Controller
     {
         $usaha  = Usaha::where('id', '=', $id)->firstOrFail();
 
-        return view('dashboard.administrasi.edit_domisili', ['domisili' => $usaha]);
+        return view('dashboard.administrasi.edit_usaha', ['usaha' => $usaha]);
     }
 
     /**
@@ -97,7 +97,6 @@ class DashboardUsahaController extends Controller
             'nik' => 'required',
             'no_kk' => 'required',
             'nama' => 'required',
-            'alamat' => 'required',
             'jenis_kelamin' => 'required',
             'binti' => 'required',
             'tmpt_lahir' => 'required',
@@ -105,6 +104,7 @@ class DashboardUsahaController extends Controller
             'agama' => 'required',
             'warganegara' => 'required',
             'pekerjaan' => 'required',
+            'alamat' => 'required',
             'no_surat' => 'required',
             'keperluan' => 'required',
         ]);
@@ -112,7 +112,7 @@ class DashboardUsahaController extends Controller
         $usaha  = Usaha::where('id', '=', $id)->firstOrFail();
         $usaha->update($validatedData);
 
-        return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil diperbarui');
+        return redirect()->route('dashboard.usaha.index')->with('success', 'Data penduduk berhasil diperbarui');
     }
 
     /**
@@ -122,7 +122,29 @@ class DashboardUsahaController extends Controller
     {
         $usaha = Usaha::findOrFail($id);
         $usaha->delete();
-        return redirect()->route('dashboard.administrasi.index')->with('success', 'Data penduduk berhasil dihapus');
+        return redirect()->route('dashboard.usaha.index')->with('success', 'Data penduduk berhasil dihapus');
+    }
+
+    public function export(string $id)
+    {
+        $usaha  = Usaha::where('id', '=', $id)->firstOrFail();
+        // return view('dashboard.administrasi.tampilan_domisili', ['domisili'=> $domisili]);
+        $pdf = new Dompdf();
+        $contxt = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE,
+            ]
+        ]);
+
+        $pdf = \PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true]);
+        $pdf->getDomPDF()->setHttpContext($contxt);
+
+        $pdf->loadHtml(View::make('dashboard.administrasi.tampilan_domisili')->with('usaha', $usaha)->render());
+        $pdf->render();
+
+        return $pdf->stream();
     }
 
     public function getDataByNik($nik)

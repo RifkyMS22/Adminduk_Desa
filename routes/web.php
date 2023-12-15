@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrasiController;
@@ -20,11 +19,17 @@ use App\Http\Controllers\DashboardKelahiranController;
 Route::get('/datapenduduk', [DataPendudukController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/dashboard', function(){
     return view ('dashboard.index');
     });
+
+//Route untuk Home
+Route::get('/', [HomeController::class, 'index'])->name('home.berita');
+Route::get('/semua-berita', [HomeController::class, 'semuaBerita'])->name('semua-berita');
+Route::get('/berita/show-berita/{id}', [HomeController::class, 'show'])->name('berita.show');
+
 
 // Route untuk Data Penduduk
 Route::get('/dashboard/penduduk', [DashboardPendudukController::class, 'index'])->name('dashboard.penduduk.index');
@@ -84,9 +89,8 @@ Route::put('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'up
 Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'destroy'])->name('dashboard.adminduk.destroy_kelahiran');
 Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::class, 'export'])->name('dashboard.adminduk.export');
 
-//Route untuk Berita
-Route::get('/berita/index', [BeritaController::class, 'index'])->name('berita.index');
-Route::get('/berita/show-berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+
+
 
 
 Route::get('/dashboard/berita/index', [DashboardBeritaController::class, 'index'])->name('dashboard.berita.index');

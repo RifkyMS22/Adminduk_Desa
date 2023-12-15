@@ -65,6 +65,10 @@
                             <label for="pekerjaan">Pekerjaan</label>
                             <input id="pekerjaan" type="text" class="form-control" name="pekerjaan" required>
                         </div>
+                        <div class="form-group mb-3">
+                            <label for="alamat">alamat</label>
+                            <input id="alamat" type="text" class="form-control" name="alamat" required>
+                        </div>
 
                         <div class="form-group mb-3">
                             <label for="no_surat">No Surat</label>
@@ -78,7 +82,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Tambah</button>
-                            <a href="{{ route('dashboard.penduduk.index') }}" class="btn btn-secondary">Kembali</a>
+                            <a href="{{ route('dashboard.usaha.index') }}" class="btn btn-secondary">Kembali</a>
                         </div>
 
                         

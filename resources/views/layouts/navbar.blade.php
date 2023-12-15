@@ -1,46 +1,18 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Adminduk Palar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="bg-gray-800 p-4">
+    <div class="container mx-auto flex items-center justify-between">
+        <a class="text-white text-lg font-bold" href="#">Adminduk Palar</a>
+        <button class="text-white focus:outline-none lg:hidden">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
-                {{-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="/layanan" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Layanan
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="/layanan"></a></li>
-                      <li><a class="dropdown-item" href="#">Surat Keterangan</a></li>
-                      <li><a class="dropdown-item" href="#">Surat Pengantar</a></li>
-                      <li><a class="dropdown-item" href="#">Surat Pernyataan</a></li>
-                    </ul>
-                  </li> --}}
-                <li class="nav-item">
-                    <a class="nav-link" href="/layanan/index">Layanan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/berita/index">Berita</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-
-
-                {{-- <li class="nav-item">
-                    <a href="/login" class="nav-link" {{ ($active == "login") ? 'active' : '' }}><i class="bi bi-box-arrow-in-right"></i>Login</a>
-                </li> --}}
-            </ul>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a class="text-white" href="/">Home</a>
+            <a class="text-white" href="/layanan/index">Layanan</a>
+            <a class="text-white" href="/semua-berita">Berita</a>
+            <a class="text-white" href="/profile">Profile</a>
+            <a class="text-white" href="/dashboard">Dashboard</a>
+            <a class="text-white" href="/login">Login</a>
         </div>
     </div>
 </nav>

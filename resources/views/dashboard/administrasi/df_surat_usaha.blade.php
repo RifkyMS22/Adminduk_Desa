@@ -11,31 +11,58 @@
     <table class="table table-striped table-sm table-bordered">
         <thead>
         <tr>
-            <th scope="col">Nama</th>
-            <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Nama Lengkap</th>
+            <th scope="col">NIK</th>
+            <th scope="col">No KK</th>
+            <th scope="col">Nama Ayah</th>
             <th scope="col">Tempat Lahir</th>
             <th scope="col">Tanggal Lahir</th>
-            <th scope="col">Warganegara</th>
             <th scope="col">Agama</th>
+            <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Warganegara</th>
+            <th scope="col">Alamat</th>
             <th scope="col">Pekerjaan</th>
-            <th scope="col">Tempat Tinggal</th>
-            <th scope="col">Surat Bukti Diri</th>
+            <th scope="col">No Surat</th>
             <th scope="col">Keperluan</th>
-            <th scope="col">Berlaku</th>
-            <th scope="col">Keterangan Lain</th>
+            <th scope="col">Aksi</th>
         </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($dataPenduduk as $penduduk) --}}
+            @foreach ($usaha as $usaha)
             <tr>
-                {{-- <td>{{ $penduduk->nik }}</td>
-                <td>{{ $penduduk->no_kk }}</td>
-                <td>{{ $penduduk->nama}}</td>
-                <td>{{ $penduduk->alamat}}</td>
-                <td>{{ $penduduk->rt}}</td>
-                <td>{{ $penduduk->rw}}</td> --}}
+                <td>{{ $usaha->nama}}</td>
+                <td>{{ $usaha->nik }}</td>
+                <td>{{ $usaha->no_kk }}</td>
+                <td>{{ $usaha->binti }}</td>
+                <td>{{ $usaha->tmpt_lahir }}</td>
+                <td>{{ $usaha->tgl_lahir }}</td>
+                <td>{{ $usaha->agama}}</td>
+                <td>{{ $usaha->jenis_kelamin}}</td>
+                <td>{{ $usaha->warganegara}}</td>
+                <td>{{ $usaha->alamat}}</td>
+                <td>{{ $usaha->pekerjaan}}</td>
+                <td>{{ $usaha->no_surat}}</td>
+                <td>{{ $usaha->keperluan}}</td>
+                <td width="100">
+                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id . '/edit') }}" class="badge bg-warning">
+                        <i data-feather="edit"></i>
+                    </a>
+                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $usaha->id }}').submit();">
+                        <i data-feather="x-circle"></i>
+                    </a>
+                    <a href="{{ url('/dashboard/usaha/administrasi/export/' . $usaha->id) }}" class="badge bg-primary" target="_blank">
+                        <i data-feather="printer"></i>
+                    </a>
+                    <form id="delete-form-{{ $usaha->id }}" action="{{ url('/dashboard/usaha/store' . $usaha->id) }}" method="POST" style="display: none;">
+                        @csrf
+                        @method('DELETE')
+                    </form>
+                </td>
             </tr>
-            {{-- @endforeach --}}
+            @endforeach
+            <script>
+                feather.replace()
+            </script>
         </tbody>
     </table>
 </div>
