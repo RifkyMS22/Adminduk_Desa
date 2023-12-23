@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('agama');
             $table->string('pekerjaan');
             $table->string('alamat');
+            $table->string('rt');
+            $table->string('rw');
             $table->string('no_surat');
             $table->string('berlaku');
             $table->string('ket_lain');

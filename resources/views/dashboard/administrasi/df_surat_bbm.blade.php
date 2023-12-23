@@ -1,59 +1,60 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Data Surat Rekomendasi BBM</h1>
+@section('content')
+<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b border-gray-200">
+    <h1 class="text-2xl">Data Surat Rekomendasi BBM</h1>
 </div>
-<div class="btn-group">
-    <a href="/dashboard/create_bbm" class="btn btn-primary active" aria-current="page">Tambah</a>
-  </div>
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
+
+<div class="flex items-center mb-4">
+    <a href="/dashboard/create_bbm" class="mr-auto bg-blue-500 text-white py-2 px-4 rounded-md">Tambah</a>
+</div>
+
+<div class="overflow-x-auto">
+    <table class="min-w-full table-auto border">
         <thead>
-        <tr>
-            <th scope="col">Nama</th>
-            <th scope="col">NIK</th>
-            <th scope="col">No KK</th>
-            <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Tempat Lahir</th>
-            <th scope="col">Tanggal Lahir</th>
-            <th scope="col">Pekerjaan</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Alamat Usaha</th>
-            <th scope="col">konsumen pengguna</th>
-            <th scope="col">Jenis USaha</th>
-            <th scope="col">No Surat</th>
-            <th scope="col">Jenis BBM</th>
-            <th scope="col">Masa Berlaku</th>
-            <th scope="col">Aksi</th>
-        </tr>
+            <tr>
+                <th class="py-2 px-4 border-b">Nama</th>
+                <th class="py-2 px-4 border-b">NIK</th>
+                <th class="py-2 px-4 border-b">No KK</th>
+                <th class="py-2 px-4 border-b">Jenis Kelamin</th>
+                <th class="py-2 px-4 border-b">Tempat Lahir</th>
+                <th class="py-2 px-4 border-b">Tanggal Lahir</th>
+                <th class="py-2 px-4 border-b">Pekerjaan</th>
+                <th class="py-2 px-4 border-b">Alamat</th>
+                <th class="py-2 px-4 border-b">Alamat Usaha</th>
+                <th class="py-2 px-4 border-b">Konsumen Pengguna</th>
+                <th class="py-2 px-4 border-b">Jenis Usaha</th>
+                <th class="py-2 px-4 border-b">No Surat</th>
+                <th class="py-2 px-4 border-b">Jenis BBM</th>
+                <th class="py-2 px-4 border-b">Masa Berlaku</th>
+                <th class="py-2 px-4 border-b">Aksi</th>
+            </tr>
         </thead>
         <tbody>
             @foreach ($rekomendasiBbm as $rekomendasiBbm)
             <tr>
-                <td>{{ $rekomendasiBbm->nama}}</td>
-                <td>{{ $rekomendasiBbm->nik }}</td>
-                <td>{{ $rekomendasiBbm->no_kk }}</td>
-                <td>{{ $rekomendasiBbm->jenis_kelamin}}</td>
-                <td>{{ $rekomendasiBbm->tmptlahir}}</td>
-                <td>{{ $rekomendasiBbm->tgl_lahir}}</td>
-                <td>{{ $rekomendasiBbm->pekerjaan}}</td>
-                <td>{{ $rekomendasiBbm->alamat}}</td>
-                <td>{{ $rekomendasiBbm->alamat_usaha}}</td>
-                <td>{{ $rekomendasiBbm->konsumen_pengguna}}</td>
-                <td>{{ $rekomendasiBbm->jns_usaha}}</td>
-                <td>{{ $rekomendasiBbm->no_surat}}</td>
-                <td>{{ $rekomendasiBbm->jns_bbm}}</td>
-                <td>{{ $rekomendasiBbm->masa_berlaku}}</td>
-
-                <td width="100">
-                    <a href="{{ url('/dashboard/bbm/administrasi/' . $rekomendasiBbm->id . '/edit') }}" class="badge bg-warning">
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->nama }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->nik }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->no_kk }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->jenis_kelamin }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->tmptlahir }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->tgl_lahir }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->pekerjaan }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->alamat }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->alamat_usaha }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->konsumen_pengguna }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->jns_usaha }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->no_surat }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->jns_bbm }}</td>
+                <td class="px-6 py-4 border-b">{{ $rekomendasiBbm->masa_berlaku }}</td>
+                <td class="px-6 py-4 border-b space-x-2">
+                    <a href="{{ url('/dashboard/bbm/administrasi/' . $rekomendasiBbm->id . '/edit') }}" class="text-yellow-500 hover:text-yellow-700">
                         <i data-feather="edit"></i>
                     </a>
-                    <a href="{{ url('/dashboard/bbm/administrasi/' . $rekomendasiBbm->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $rekomendasiBbm->id }}').submit();">
+                    <a href="{{ url('/dashboard/bbm/administrasi/' . $rekomendasiBbm->id) }}" class="text-red-500 hover:text-red-700" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $rekomendasiBbm->id }}').submit();">
                         <i data-feather="x-circle"></i>
                     </a>
-                    <a href="{{ url('/dashboard/administrasi/domisili/export/' . $rekomendasiBbm->id) }}" class="badge bg-primary" target="_blank">
+                    <a href="{{ url('/dashboard/administrasi/domisili/export/' . $rekomendasiBbm->id) }}" class="text-blue-500 hover:text-blue-700">
                         <i data-feather="printer"></i>
                     </a>
                     <form id="delete-form-{{ $rekomendasiBbm->id }}" action="{{ url('/dashboard/bbm/administrasi/' . $rekomendasiBbm->id) }}" method="POST" style="display: none;">
@@ -61,6 +62,7 @@
                         @method('DELETE')
                     </form>
                 </td>
+            </tr>
             @endforeach
             <script>
                 feather.replace()

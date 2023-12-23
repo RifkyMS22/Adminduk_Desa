@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Layanans;
 use Illuminate\Http\Request;
 
@@ -10,9 +10,16 @@ class LayananController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function __construct()
+    // {
+    //     // Middleware 'user' diaplikasikan pada seluruh metode controller
+    //     $this->middleware('role:user');
+    //     $this->middleware('role:admin');
+    // }
+    
+     public function index()
     {
-        return view ('layanan.index-layanan');
+       return view ('layanan.index-layanan');
     }
 
     /**
@@ -62,4 +69,38 @@ class LayananController extends Controller
     {
         //
     }
+
+    public function umum()
+    {
+       return view ('layanan.umum-index');
+    }
+    public function domisili()
+    {
+       return view ('layanan.domisili-index');
+    }
+    public function bbm()
+    {
+       return view ('layanan.bbm-index');
+    }
+    public function usaha()
+    {
+       return view ('layanan.usaha-index');
+    }
+    public function kelahiran()
+    {
+       return view ('layanan.kelahiran-index');
+    }
+    public function kematian()
+    {
+       return view ('layanan.kematian-index');
+    }
+    public function pindah()
+    {
+       return view ('layanan.pindah-index');
+    }
+    public function datang()
+    {
+       return view ('layanan.datang-index');
+    }
+
 }

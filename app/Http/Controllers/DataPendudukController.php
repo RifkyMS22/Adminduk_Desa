@@ -12,7 +12,10 @@ class DataPendudukController extends Controller
     {
         $dataPenduduk = DataPenduduk::all();
 
-        return view('penduduk', ['dataPenduduk' => $dataPenduduk]);
+        // Menghitung total jumlah penduduk
+        $totalPenduduk = DataPenduduk::count();
+
+        return view('penduduk', ['dataPenduduk' => $dataPenduduk, 'totalPenduduk' => $totalPenduduk]);
     }
 
     public function create()

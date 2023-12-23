@@ -7,6 +7,7 @@ use Dompdf\Dompdf;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
+use App\Models\DataPenduduk;
 
 class DashboardKetUmumController extends Controller
 {
@@ -24,7 +25,8 @@ class DashboardKetUmumController extends Controller
      */
     public function create()
     {
-        return view ('dashboard.administrasi.create_umum');
+        $nikes = DataPenduduk::select('nik', 'nama', 'no_kk', 'jns_kelamin','nama_ayah', 'agama', 'alamat','rt', 'rw' ,'tmpt_lahir', 'tgl_lahir')->get();
+        return view ('dashboard.administrasi.create_umum', compact('nikes'));
     }
 
     /**
@@ -43,6 +45,8 @@ class DashboardKetUmumController extends Controller
         $keteranganUmum->agama = $request->input('agama');
         $keteranganUmum->pekerjaan = $request->input('pekerjaan');
         $keteranganUmum->alamat = $request->input('alamat');
+        $keteranganUmum->rt = $request->input('rt');
+        $keteranganUmum->rw = $request->input('rw');
         $keteranganUmum->no_surat = $request->input('no_surat');
         $keteranganUmum->berlaku = $request->input('berlaku');
         $keteranganUmum->ket_lain = $request->input('ket_lain');
@@ -130,5 +134,16 @@ class DashboardKetUmumController extends Controller
         $pdf->render();
 
         return $pdf->stream();
+    }
+    public function getDataByNik($nik)
+    {
+        // Lakukan pencarian data berdasarkan NIK
+        $data = DataPenduduk::where('nik', $nik)->first();
+
+        if ($data) {
+            return response()->json($data);
+        } else {
+            return response()->json(['error' => 'Data not found'], 404);
+        }
     }
 }

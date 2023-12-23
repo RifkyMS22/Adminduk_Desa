@@ -1,63 +1,77 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Data Surat Keterangan Domisili</h1>
+@section('content')
+<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b">
+    <h1 class="text-2xl">Data Surat Keterangan Domisili</h1>
 </div>
-<div class="btn-group">
-    <a href="{{ route('dashboard.administrasi.create_domisili') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
+
+<div class="flex items-center mb-4">
+    <a href="{{ route('dashboard.administrasi.create_domisili') }}" class="bg-blue-500 text-white py-2 px-4 rounded-md">Tambah</a>
 </div>
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
+
+<div class="overflow-x-auto">
+    <table class="min-w-full table-auto border">
         <thead>
             <tr>
-                <th scope="col">Nama Lengkap</th>
-                <th scope="col">NIK</th>
-                <th scope="col">No KK</th>
-                <th scope="col">Nama Ayah</th>
-                <th scope="col">Tempat Lahir</th>
-                <th scope="col">Tanggal Lahir</th>
-                <th scope="col">Agama</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col">Warganegara</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Pekerjaan</th>
-                <th scope="col">No Surat</th>
-                <th scope="col">Keperluan</th>
-                <th scope="col">Aksi</th>
+                <th class="py-2 px-4 border-b">Nama Lengkap</th>
+                <th class="py-2 px-4 border-b">NIK</th>
+                <th class="py-2 px-4 border-b">No KK</th>
+                <th class="py-2 px-4 border-b">Nama Ayah</th>
+                <th class="py-2 px-4 border-b">Tempat Lahir</th>
+                <th class="py-2 px-4 border-b">Tanggal Lahir</th>
+                <th class="py-2 px-4 border-b">Agama</th>
+                <th class="py-2 px-4 border-b">Jenis Kelamin</th>
+                <th class="py-2 px-4 border-b">Warganegara</th>
+                <th class="py-2 px-4 border-b">Alamat</th>
+                <th class="py-2 px-4 border-b">Pekerjaan</th>
+                <th class="py-2 px-4 border-b">No Surat</th>
+                <th class="py-2 px-4 border-b">Keperluan</th>
+                <th class="py-2 px-4 border-b">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($domisili as $domisili)
             <tr>
-                <td width="200">{{ $domisili->nama }}</td>
-                <td>{{ $domisili->nik }}</td>
-                <td>{{ $domisili->no_kk }}</td>
-                <td>{{ $domisili->binti }}</td>
-                <td>{{ $domisili->tmpt_lahir }}</td>
-                <td>{{ $domisili->tgl_lahir }}</td>
-                <td>{{ $domisili->agama }}</td>
-                <td>{{ $domisili->jenis_kelamin }}</td>
-                <td>{{ $domisili->warganegara }}</td>
-                <td>{{ $domisili->alamat }}</td>
-                <td>{{ $domisili->pekerjaan }}</td>
-                <td>{{ $domisili->no_surat }}</td>
-                <td>{{ $domisili->keperluan }}</td>
-                <td width="100">
-                    <a href="{{ url('/dashboard/administrasi/' . $domisili->id . '/edit') }}" class="badge bg-warning">
-                        <i data-feather="edit"></i>
-                    </a>
-                    <a href="{{ url('/dashboard/administrasi/' . $domisili->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $domisili->id }}').submit();">
-                        <i data-feather="x-circle"></i>
-                    </a>
-                    <a href="{{ url('/dashboard/administrasi/domisili/export/' . $domisili->id) }}" class="badge bg-primary" target="_blank">
-                        <i data-feather="printer"></i>
-                    </a>
+                <td class="py-2 px-4 border-b">{{ $domisili->nama }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->nik }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->no_kk }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->binti }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->tmpt_lahir }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->tgl_lahir }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->agama }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->jenis_kelamin }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->warganegara }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->alamat }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->pekerjaan }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->no_surat }}</td>
+                <td class="py-2 px-4 border-b">{{ $domisili->keperluan }}</td>
+                <td class="py-2 px-4 border-b">
+                    <form action="{{ url('/dashboard/administrasi/' . $domisili->id . '/edit') }}" method="GET" class="inline">
+                        <button type="submit" class="btn btn-warning">
+                            <i data-feather="edit"></i>
+                        </button>
+                    </form>
+                
+                    <form action="{{ url('/dashboard/administrasi/' . $domisili->id) }}" method="POST" class="inline" onsubmit="event.preventDefault(); document.getElementById('delete-form-{{ $domisili->id }}').submit();">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i data-feather="x-circle"></i>
+                        </button>
+                    </form>
+                
+                    <form action="{{ url('/dashboard/administrasi/domisili/export/' . $domisili->id) }}" method="GET" class="inline" target="_blank">
+                        <button type="submit" class="btn btn-primary">
+                            <i data-feather="printer"></i>
+                        </button>
+                    </form>
+                
                     <form id="delete-form-{{ $domisili->id }}" action="{{ url('/dashboard/administrasi/' . $domisili->id) }}" method="POST" style="display: none;">
                         @csrf
                         @method('DELETE')
                     </form>
                 </td>
+                
             </tr>
             @endforeach
             <script>

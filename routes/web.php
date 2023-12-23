@@ -1,35 +1,67 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\DataPendudukController;
 use App\Http\Controllers\DashboardUsahaController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardPindahController;
 use App\Http\Controllers\DashboardRekBbmController;
 use App\Http\Controllers\DashboardKetUmumController;
 use App\Http\Controllers\DashboardDomisiliController;
+use App\Http\Controllers\DashboardKematianController;
 use App\Http\Controllers\DashboardPendudukController;
+use App\Http\Controllers\DashboardInformasiController;
 use App\Http\Controllers\DashboardKelahiranController;
+use App\Http\Controllers\DashboardPengaduanController;
+
+
 
 Route::get('/datapenduduk', [DataPendudukController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
-// Route::get('/', [HomeController::class, 'index']);
+// Route::get('/dashboard', function(){
+//     return view ('dashboard.index');
+//     });
+// Route::get('/dashboard-admin', function(){
+//     return view ('dashboard.layouts-dashboard.app');
+// });
 
-Route::get('/dashboard', function(){
-    return view ('dashboard.index');
-    });
+Route::get('/dashboard-administrasi', function(){
+    return view ('dashboard.administrasi.administrasi');
+});
+Route::get('/dashboard-adminiduk', function(){
+    return view ('dashboard.adminduk.adminduk');
+});
+
+Route::middleware(['role:admin'])->group(function () {
+    //Route Untuk Dashboard
+    Route::get('/dashboard-index', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard/chart', 'DashboardController@showChart');
+
+});
 
 //Route untuk Home
 Route::get('/', [HomeController::class, 'index'])->name('home.berita');
 Route::get('/semua-berita', [HomeController::class, 'semuaBerita'])->name('semua-berita');
 Route::get('/berita/show-berita/{id}', [HomeController::class, 'show'])->name('berita.show');
+Route::post('/pengaduan/store', [HomeController::class, 'store'])->name('pengaduan.store');
 
+//Route untuk dashboard pengaduan
+Route::get('/dashboard/pengaduan/index', [DashboardPengaduanController::class, 'index'])->name('dashboard.pengaduan.index');
+
+//Route untuk dashboard informasi
+Route::get('/dashboard/informasi/index', [DashboardInformasiController::class, 'index'])->name('dashboard.informasi.index');
+Route::get('/dashboard/informasi/create', [DashboardInformasiController::class, 'create'])->name('dashboard.informasi.create');
+Route::post('/dashboard/informasi/store', [DashboardInformasiController::class, 'store'])->name('dashboard.informasi.store');
 
 // Route untuk Data Penduduk
 Route::get('/dashboard/penduduk', [DashboardPendudukController::class, 'index'])->name('dashboard.penduduk.index');
@@ -68,8 +100,6 @@ Route::delete('/dashboard/usaha/administrasi/{id}', [DashboardUsahaController::c
 Route::get('/dashboard/usaha/administrasi/export/{id}', [DashboardUsahaController::class, 'export'])->name('dashboard.usaha.export');
 Route::get('/get-data-by-nik/{nik}', [DashboardUsahaController::class, 'getDataByNik']);
 
-
-
 //Route untuk rekomendasi BBM
 Route::get('/dashboard/df_surat_bbm', [DashboardRekBbmController::class, 'index'])->name('dashboard.bbm.index');
 Route::get('/dashboard/create_bbm', [DashboardRekBbmController::class, 'create'])->name('dashboard.bbm.create');
@@ -89,28 +119,51 @@ Route::put('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'up
 Route::delete('/dashboard/adminduk/{id}', [DashboardKelahiranController::class, 'destroy'])->name('dashboard.adminduk.destroy_kelahiran');
 Route::get('/dashboard/adminduk/export/{id}', [DashboardKelahiranController::class, 'export'])->name('dashboard.adminduk.export');
 
+//Route Untuk Kematian
+Route::get('/dashboard/kematian', [DashboardKematianController::class, 'index'])->name('dashboard.kematian.index');
+Route::get('/dashboard/create_kematian', [DashboardKematianController::class, 'create'])->name('dashboard.kematian.create');
+Route::post('/dashboard/adminduk/create_kematian', [DashboardKematianController::class, 'store'])->name('dashboard.kematian.store');
+
+//Route untuk Pindah
+Route::get('/dashboard/pindah/index', [DashboardPindahController::class, 'index'])->name('dashboard.pindah.index');
+Route::get('/dashboard/pindah/create', [DashboardPindahController::class, 'create'])->name('dashboard.pindah.create');
+Route::get('/dashboard/pindah/store', [DashboardPindahController::class, 'store'])->name('dashboard.pindah.store');
 
 
+// Route untuk layanan
+Route::get('/layanan/index', [LayananController::class, 'index'])->name('layanan.index');
 
+Route::get('layanan/umum-index', [LayananController::class, 'umum'])->name('layanan.umum.index');
+Route::get('layanan/domisili-index', [LayananController::class, 'domisili'])->name('layanan.domisili.index');
+Route::get('layanan/usaha-index', [LayananController::class, 'usaha'])->name('layanan.usaha.index');
+Route::get('layanan/bbm-index', [LayananController::class, 'bbm'])->name('layanan.bbm.index');
+Route::get('layanan/kelahiran-index', [LayananController::class, 'kelahiran'])->name('layanan.kelahiran.index');
+Route::get('layanan/kematian-index', [LayananController::class, 'kematian'])->name('layanan.kematian.index');
+Route::get('layanan/pindah-index', [LayananController::class, 'pindah'])->name('layanan.pindah.index');
+Route::get('layanan/datang-index', [LayananController::class, 'datang'])->name('layanan.datang.index');
 
+// ROute untuk berita dashboard
 Route::get('/dashboard/berita/index', [DashboardBeritaController::class, 'index'])->name('dashboard.berita.index');
 Route::get('/dashboard/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
 Route::post('/dashboard/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
 
 
-//Route untuk layanan
-Route::get('/layanan/index', [LayananController::class, 'index'])->name('layanan.index');
-
-
-
-//Route untuk Login
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+//Route untuk login
+Route::get('/halaman_login', [LoginController::class, 'index'])->name('halaman.login');
 Route::post('/login', [LoginController::class, 'authenticate']);
+//Route untuk logout
+Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
+
 //ROute untuk Registrasi
-Route::get('/registrasi', [RegistrasiController::class, 'index']);
-Route::post('/registrasi', [RegistrasiController::class, 'store']);
+Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi.index');
+Route::post('/registrasi', [RegistrasiController::class, 'store'])->name('registrasi.store');
 // Route::post('/registrasi', [RegistrasiController::class, 'store']);
 
+
+
+Route::get('/chat', [ChatController::class, 'index']);
+Route::post('/send-message', [ChatController::class, 'sendMessage']);
+Route::post('/upload-file', [ChatController::class, 'uploadFile']);
 
 
 
@@ -129,9 +182,20 @@ Route::get('/cetakumum', function(){
 Route::get('/cetakbbm', function(){
     return view ('dashboard.administrasi.tampilan_bbm');
 });
+Route::get('/cetakdatang', function(){
+    return view ('dashboard.adminduk.tampilan_datang');
+});
 
 
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

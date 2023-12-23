@@ -1,57 +1,57 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Data Surat Keterangan Usaha</h1>
+@section('content')
+<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b border-gray-200">
+    <h1 class="text-2xl font-semibold">Data Surat Keterangan Usaha</h1>
 </div>
-<div class="btn-group">
-    <a href="/dashboard/create_usaha" class="btn btn-primary active" aria-current="page">Tambah</a>
-  </div>
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
+<div class="flex mb-4">
+    <a href="/dashboard/create_usaha" class="bg-blue-500 text-white py-2 px-4 rounded-md">Tambah</a>
+</div>
+<div class="overflow-x-auto">
+    <table class="min-w-full table-auto border">
         <thead>
-        <tr>
-            <th scope="col">Nama Lengkap</th>
-            <th scope="col">NIK</th>
-            <th scope="col">No KK</th>
-            <th scope="col">Nama Ayah</th>
-            <th scope="col">Tempat Lahir</th>
-            <th scope="col">Tanggal Lahir</th>
-            <th scope="col">Agama</th>
-            <th scope="col">Jenis Kelamin</th>
-            <th scope="col">Warganegara</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Pekerjaan</th>
-            <th scope="col">No Surat</th>
-            <th scope="col">Keperluan</th>
-            <th scope="col">Aksi</th>
-        </tr>
+            <tr>
+                <th class="py-2 px-4 border-b">Nama Lengkap</th>
+                <th class="py-2 px-4 border-b">NIK</th>
+                <th class="py-2 px-4 border-b">No KK</th>
+                <th class="py-2 px-4 border-b">Nama Ayah</th>
+                <th class="py-2 px-4 border-b">Tempat Lahir</th>
+                <th class="py-2 px-4 border-b">Tanggal Lahir</th>
+                <th class="py-2 px-4 border-b">Agama</th>
+                <th class="py-2 px-4 border-b">Jenis Kelamin</th>
+                <th class="py-2 px-4 border-b">Warganegara</th>
+                <th class="py-2 px-4 border-b">Alamat</th>
+                <th class="py-2 px-4 border-b">Pekerjaan</th>
+                <th class="py-2 px-4 border-b">No Surat</th>
+                <th class="py-2 px-4 border-b">Keperluan</th>
+                <th class="py-2 px-4 border-b">Aksi</th>
+            </tr>
         </thead>
         <tbody>
             @foreach ($usaha as $usaha)
             <tr>
-                <td>{{ $usaha->nama}}</td>
-                <td>{{ $usaha->nik }}</td>
-                <td>{{ $usaha->no_kk }}</td>
-                <td>{{ $usaha->binti }}</td>
-                <td>{{ $usaha->tmpt_lahir }}</td>
-                <td>{{ $usaha->tgl_lahir }}</td>
-                <td>{{ $usaha->agama}}</td>
-                <td>{{ $usaha->jenis_kelamin}}</td>
-                <td>{{ $usaha->warganegara}}</td>
-                <td>{{ $usaha->alamat}}</td>
-                <td>{{ $usaha->pekerjaan}}</td>
-                <td>{{ $usaha->no_surat}}</td>
-                <td>{{ $usaha->keperluan}}</td>
-                <td width="100">
-                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id . '/edit') }}" class="badge bg-warning">
-                        <i data-feather="edit"></i>
+                <td class="py-2 px-4 border-b">{{ $usaha->nama }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->nik }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->no_kk }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->binti }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->tmpt_lahir }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->tgl_lahir }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->agama }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->jenis_kelamin }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->warganegara }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->alamat }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->pekerjaan }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->no_surat }}</td>
+                <td class="py-2 px-4 border-b">{{ $usaha->keperluan }}</td>
+                <td class="py-2 px-4 border-b">
+                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id . '/edit') }}" class="text-yellow-500">
+                        <i data-feather="edit" class="inline-block"></i>
                     </a>
-                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $usaha->id }}').submit();">
-                        <i data-feather="x-circle"></i>
+                    <a href="{{ url('/dashboard/usaha/administrasi/' . $usaha->id) }}" class="text-red-500" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $usaha->id }}').submit();">
+                        <i data-feather="x-circle" class="inline-block"></i>
                     </a>
-                    <a href="{{ url('/dashboard/usaha/administrasi/export/' . $usaha->id) }}" class="badge bg-primary" target="_blank">
-                        <i data-feather="printer"></i>
+                    <a href="{{ url('/dashboard/usaha/administrasi/export/' . $usaha->id) }}" class="text-blue-500" target="_blank">
+                        <i data-feather="printer" class="inline-block"></i>
                     </a>
                     <form id="delete-form-{{ $usaha->id }}" action="{{ url('/dashboard/usaha/store' . $usaha->id) }}" method="POST" style="display: none;">
                         @csrf

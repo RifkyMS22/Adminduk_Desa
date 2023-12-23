@@ -1,106 +1,104 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')      
 
-@section('container')
+@section('content')
 
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Data Penduduk Desa Palar</h1>
+<div class="flex justify-between flex-wrap items-center pt-3 pb-2 mb-3 border-b">
+  <h1 class="text-2xl font-semibold">Data Penduduk Desa Palar</h1>
+
+  <form action="{{ route('dashboard.penduduk.index') }}" method="get" class="mb-2">
+     <div class="flex items-center">
+        <input type="text" name="search" placeholder="Cari penduduk" class="border p-2 mr-2">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+           Cari
+        </button>
+     </div>
+  </form>
 </div>
-<div class="btn-group">
-  <a href="/creatependuduk" class="btn btn-primary active" aria-current="page">Tambah</a>
+<div class="mb-4">
+  <a href="/creatependuduk" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    Tambah
+  </a>
 </div>
 
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
-      <thead>
+<div class="overflow-x-auto">
+  <table class="min-w-full border border-collapse">
+    <thead>
+      <tr>
+        <th class="border p-2 w-20">NIK</th>
+        <th class="border p-2 w-20">NO KK</th>
+        <th class="border p-2 w-40">Nama</th>
+        <th class="border p-2 w-40">Alamat</th>
+        <th class="border p-2 w-10">RT</th>
+        <th class="border p-2 w-10">RW</th>
+        <th class="border p-2 w-20">Tempat Lahir</th>
+        <th class="border p-2 w-20">Tanggal Lahir</th>
+        <th class="border p-2 w-20">Jenis Kelamin</th>
+        <th class="border p-2 w-20">Status Perkawinan</th>
+        <th class="border p-2 w-20">Pendidikan</th>
+        <th class="border p-2 w-20">Status Hubungan Keluarga</th>
+        <th class="border p-2 w-20">Pekerjaan</th>
+        <th class="border p-2 w-20">Agama</th>
+        <th class="border p-2 w-20">No Akta Lahir</th>
+        <th class="border p-2 w-20">No Akta Nikah</th>
+        <th class="border p-2 w-20">Tanggal Nikah</th>
+        <th class="border p-2 w-20">No Akta Cerai</th>
+        <th class="border p-2 w-20">Tanggal Cerai</th>
+        <th class="border p-2 w-20">NIK Ayah</th>
+        <th class="border p-2 w-40">Nama Ayah</th>
+        <th class="border p-2 w-20">NIK Ibu</th>
+        <th class="border p-2 w-40">Nama Ibu</th>
+        <th class="border p-2 w-20">Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($dataPenduduk as $penduduk)
         <tr>
-          <th scope="col">NIK</th>
-          <th scope="col">NO KK</th>
-          <th scope="col">Nama</th>
-          <th scope="col">Alamat</th>
-          <th scope="col">RT</th>
-          <th scope="col">RW</th>
-          <th scope="col">Tempat Lahir</th>
-          <th scope="col">Tanggal Lahir</th>
-          <th scope="col">Jenis Kelamin</th>
-          <th scope="col">Status Perkawinan</th>
-          <th scope="col">Pendidikan</th>
-          <th scope="col">Status Hubungan Keluarga</th>
-          <th scope="col">Pekerjaan</th>
-          <th scope="col">Agama</th>
-          <th scope="col">No Akta Lahir</th>
-          <th scope="col">No Akta Nikah</th>
-          <th scope="col">Tanggal Nikah</th>
-          <th scope="col">No Akta Cerai</th>
-          <th scope="col">Tanggal Cerai</th>
-          <th scope="col">NIK Ayah</th>
-          <th scope="col">Nama Ayah</th>
-          <th scope="col">NIK Ibu</th>
-          <th scope="col">Nama Ibu</th>
-          <th scope="col">Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-          @foreach ($dataPenduduk as $penduduk)
-          <tr>
-            <td>{{ $penduduk->nik }}</td>
-            <td>{{ $penduduk->no_kk }}</td>
-            <td>{{ $penduduk->nama}}</td>
-            <td>{{ $penduduk->alamat}}</td>
-            <td>{{ $penduduk->rt}}</td>
-            <td>{{ $penduduk->rw}}</td>
-            <td>{{ $penduduk->tmpt_lahir}}</td>
-            <td>{{ $penduduk->tgl_lahir}}</td>
-            <td>{{ $penduduk->jns_kelamin}}</td>
-            <td>{{ $penduduk->stts_kawin}}</td>
-            <td>{{ $penduduk->pendidikan}}</td>
-            <td>{{ $penduduk->stts_hub_keluarga }}</td>
-            <td>{{ $penduduk->pekerjaan }}</td>
-            <td>{{ $penduduk->agama }}</td>
-            <td>{{ $penduduk->no_akta_lahir }}</td>
-            <td>{{ $penduduk->no_akta_nikah}}</td>
-            <td>{{ $penduduk->tgl_nikah }}</td>
-            <td>{{ $penduduk->no_akta_cerai }}</td>
-            <td>{{ $penduduk->tgl_cerai }}</td>
-            <td>{{ $penduduk->nik_ayah }}</td>
-            <td>{{ $penduduk->nama_ayah }}</td>
-            <td>{{ $penduduk->nik_ibu }}</td>
-            <td>{{ $penduduk->nama_ibu }}</td>
-            <td>
-              {{-- <a href="{{ route('dashboard.penduduk.edit', ['penduduk' => $penduduk->nik]) }}" class="badge bg-warning">
-                <i data-feather="edit"></i>
-              </a>
-              <a href="{{ route('dashboard.penduduk.destroy', ['penduduk' => $penduduk->nik]) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form').submit();">
-                <i data-feather="x-circle"></i>
-              </a>
-              <form id="delete-form" action="{{ route('dashboard.penduduk.destroy', ['penduduk' => $penduduk->nik]) }}" method="POST" style="display: none;">
-                @csrf
-                @method('DELETE')
-              </form>  --}}
+          <td class="border">{{ $penduduk->nik }}</td>
+          <td class="border">{{ $penduduk->no_kk }}</td>
+          <td class="border">{{ $penduduk->nama}}</td>
+          <td class="border">{{ $penduduk->alamat}}</td>
+          <td class="border">{{ $penduduk->rt}}</td>
+          <td class="border">{{ $penduduk->rw}}</td>
+          <td class="border">{{ $penduduk->tmpt_lahir}}</td>
+          <td class="border">{{ $penduduk->tgl_lahir}}</td>
+          <td class="border">{{ $penduduk->jns_kelamin}}</td>
+          <td class="border">{{ $penduduk->stts_kawin}}</td>
+          <td class="border">{{ $penduduk->pendidikan}}</td>
+          <td class="border">{{ $penduduk->stts_hub_keluarga }}</td>
+          <td class="border">{{ $penduduk->pekerjaan }}</td>
+          <td class="border">{{ $penduduk->agama }}</td>
+          <td class="border">{{ $penduduk->no_akta_lahir }}</td>
+          <td class="border">{{ $penduduk->no_akta_nikah}}</td>
+          <td class="border">{{ $penduduk->tgl_nikah }}</td>
+          <td class="border">{{ $penduduk->no_akta_cerai }}</td>
+          <td class="border">{{ $penduduk->tgl_cerai }}</td>
+          <td class="border">{{ $penduduk->nik_ayah }}</td>
+          <td class="border">{{ $penduduk->nama_ayah }}</td>
+          <td class="border">{{ $penduduk->nik_ibu }}</td>
+          <td class="border">{{ $penduduk->nama_ibu }}</td>
+          <td class="border">
+            <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik . '/edit') }}" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
+              <i data-feather="edit" class="inline-block"></i>
+            </a>
+            <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $penduduk->nik }}').submit();">
+              <i data-feather="x-circle" class="inline-block"></i>
+            </a>
+            <form id="delete-form-{{ $penduduk->nik }}" action="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" method="POST" style="display: none;">
+              @csrf
+              @method('DELETE')
+            </form>
+          </td>
+        </tr> 
+      @endforeach
+      <script>
+        feather.replace()
+    </script>
+    </tbody>
+  </table>
+</div>
 
-              <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik . '/edit') }}" class="badge bg-warning">
-                <i data-feather="edit"></i>
-              </a>
-              <a href="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" class="badge bg-danger" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $penduduk->nik }}').submit();">
-                <i data-feather="x-circle"></i>
-              </a>
-              <form id="delete-form-{{ $penduduk->nik }}" action="{{ url('/dashboard/penduduk/' . $penduduk->nik) }}" method="POST" style="display: none;">
-                @csrf
-                @method('DELETE')
-              </form>
-            </td>
-            
-          </tr> 
-           
-        @endforeach
-        <script>
-          feather.replace()
-        </script>
-      </tbody>
-    </table>
-  </div>
-  <nav aria-label="Page navigation example">
-    {{ $dataPenduduk->links('pagination::bootstrap-4') }}
-  </nav>
+<div class="mt-4">
+  {{ $dataPenduduk->links('pagination::tailwind') }}
+</div>
 
-  
 @endsection

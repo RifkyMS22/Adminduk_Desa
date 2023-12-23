@@ -1,88 +1,86 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Surat Keterangan Rekomendasi BBM</h1>
+@section('content')
+<div class="flex justify-between items-center mb-8">
+    <h1 class="text-2xl font-semibold">Surat Keterangan Rekomendasi BBM</h1>
 </div>
 
-<div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('dashboard.bbm.store') }}">
-                            @csrf
+<div class="container mx-auto">
+    <div class="flex justify-center">
+        <div class="w-full md:w-2/3 lg:w-1/2">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <form method="POST" action="{{ route('dashboard.bbm.store') }}">
+                    @csrf
 
-                            <div class="form-group mb-3">
-                                <label for="nik">NIK</label>
-                                <select id="nik" class="form-control" name="nik" required>
-                                    <option value="" disabled selected>Pilih NIK atau masukkan NIK baru</option>
-                                    @foreach ($nikes as $data)
-                                    <option value="{{ $data->nik }}">{{ $data->nik }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                    <div class="mb-4">
+                        <label for="nik" class="block text-sm font-medium text-gray-600">NIK</label>
+                        <select id="nik" name="nik" class="mt-1 block w-full border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option value="" disabled selected>Pilih NIK atau masukkan NIK baru</option>
+                            @foreach ($nikes as $data)
+                            <option value="{{ $data->nik }}">{{ $data->nik }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
-                            <div class="form-group">
-                                <label for="no_kk">NO KK</label>
-                                <input id="no_kk" type="text" class="form-control" name="no_kk" required>
-                            </div>
+                    <div class="mb-4">
+                        <label for="no_kk" class="block text-sm font-medium text-gray-600">NO KK</label>
+                        <input id="no_kk" type="text" name="no_kk" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
 
-                            <div class="form-group">
-                                <label for="nama">Nama</label>
-                                <input id="nama" type="text" class="form-control" name="nama" required>
+                            <div class="mb-4">
+                                <label for="nama" class="block text-sm font-medium text-gray-600">Nama</label>
+                                <input id="nama" type="text"class="form-input mt-1 block w-full" name="nama" required>
                             </div>
-                            <div class="form-group">
-                                <label for="jenis_kelamin">Jenis Kelamin</label>
-                                <input id="jenis_kelamin" type="text" class="form-control" name="jenis_kelamin" required>
+                            <div class="mb-4">
+                                <label for="jenis_kelamin" class="block text-sm font-medium text-gray-600">Jenis Kelamin</label>
+                                <input id="jenis_kelamin" type="text"class="form-input mt-1 block w-full" name="jenis_kelamin" required>
                             </div>
-                            <div class="form-group">
-                                <label for="tmpt_lahir">Tempat Lahir</label>
-                                <input id="tmpt_lahir" type="text" class="form-control" name="tmpt_lahir" required>
+                            <div class="mb-4">
+                                <label for="tmpt_lahir" class="block text-sm font-medium text-gray-600">Tempat Lahir</label>
+                                <input id="tmpt_lahir" type="text"class="form-input mt-1 block w-full" name="tmpt_lahir" required>
                             </div>
-                            <div class="form-group">
-                                <label for="tgl_lahir">Tanggal Lahir</label>
-                                <input id="tgl_lahir" type="text" class="form-control" name="tgl_lahir" required>
+                            <div class="mb-4">
+                                <label for="tgl_lahir" class="block text-sm font-medium text-gray-600">Tanggal Lahir</label>
+                                <input id="tgl_lahir" type="text"class="form-input mt-1 block w-full" name="tgl_lahir" required>
                             </div>
-                            <div class="form-group">
-                                <label for="pekerjaan">Pekerjaan</label>
-                                <input id="pekerjaan" type="text" class="form-control" name="pekerjaan" required>
+                            <div class="mb-4">
+                                <label for="pekerjaan" class="block text-sm font-medium text-gray-600">Pekerjaan</label>
+                                <input id="pekerjaan" type="text"class="form-input mt-1 block w-full" name="pekerjaan" required>
                             </div>
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input id="alamat" type="text" class="form-control" name="alamat" required>
+                            <div class="mb-4">
+                                <label for="alamat" class="block text-sm font-medium text-gray-600">Alamat</label>
+                                <input id="alamat" type="text"class="form-input mt-1 block w-full" name="alamat" required>
                             </div>
-                            <div class="form-group">
-                                <label for="alamat_usaha">Alamat Usaha</label>
-                                <input id="alamat_usaha" type="text" class="form-control" name="alamat_usaha" required>
+                            <div class="mb-4">
+                                <label for="alamat_usaha" class="block text-sm font-medium text-gray-600">Alamat Usaha</label>
+                                <input id="alamat_usaha" type="text"class="form-input mt-1 block w-full" name="alamat_usaha" required>
                             </div>
-                            <div class="form-group">
-                                <label for="konsumen_pengguna">Konsumen Pengguna</label>
-                                <input id="konsumen_pengguna" type="text" class="form-control" name="konsumen_pengguna" required>
+                            <div class="mb-4">
+                                <label for="konsumen_pengguna" class="block text-sm font-medium text-gray-600">Konsumen Pengguna</label>
+                                <input id="konsumen_pengguna" type="text"class="form-input mt-1 block w-full" name="konsumen_pengguna" required>
                             </div>
-                            <div class="form-group">
-                                <label for="jns_usaha">Jenis Usaha</label>
-                                <input id="jns_usaha" type="text" class="form-control" name="jns_usaha" required>
+                            <div class="mb-4">
+                                <label for="jns_usaha" class="block text-sm font-medium text-gray-600">Jenis Usaha</label>
+                                <input id="jns_usaha" type="text"class="form-input mt-1 block w-full" name="jns_usaha" required>
                             </div>
-                            <div class="form-group">
-                                <label for="no_surat">No Surat</label>
-                                <input id="no_surat" type="text" class="form-control" name="no_surat" required>
+                            <div class="mb-4">
+                                <label for="no_surat" class="block text-sm font-medium text-gray-600">No Surat</label>
+                                <input id="no_surat" type="text"class="form-input mt-1 block w-full" name="no_surat" required>
                             </div>
-                            <div class="form-group">
-                                <label for="jns_bbm">Jenis BBM</label>
-                                <input id="jns_bbm" type="text" class="form-control" name="jns_bbm" required>
+                            <div class="mb-4">
+                                <label for="jns_bbm" class="block text-sm font-medium text-gray-600">Jenis BBM</label>
+                                <input id="jns_bbm" type="text"class="form-input mt-1 block w-full" name="jns_bbm" required>
                             </div>
-                            <div class="form-group">
-                                <label for="masa_berlaku">Masa Berlaku</label>
-                                <input id="masa_berlaku" type="text" class="form-control" name="masa_berlaku" required>
+                            <div class="mb-4">
+                                <label for="masa_berlaku" class="block text-sm font-medium text-gray-600">Masa Berlaku</label>
+                                <input id="masa_berlaku" type="text"class="form-input mt-1 block w-full" name="masa_berlaku" required>
                             </div>
 
                             <!-- Tambahkan input lain sesuai dengan kebutuhan Anda -->
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Tambah</button>
-                                <a href="{{ route('dashboard.bbm.index') }}" class="btn btn-secondary">Kembali</a>
+                            <div class="flex items-center justify-between mt-4">
+                                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md">Tambah</button>
+                                <a href="{{ route('dashboard.bbm.index') }}" class="bg-gray-300 text-blue-500 py-2 px-4 rounded-md">Kembali</a>
                             </div>
                         </form>
                     </div>

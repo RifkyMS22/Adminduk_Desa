@@ -1,35 +1,33 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')      
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Berita</h1>
+@section('content')
+<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b">
+    <h1 class="text-2xl">Berita</h1>
 </div>
 
-<div class="btn-group">
-    <a href="{{ route('dashboard.berita.create') }}" class="btn btn-primary active" aria-current="page">Tambah</a>
+<div class="flex">
+    <a href="{{ route('dashboard.berita.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded inline-block">Tambah</a>
 </div>
 
-<div class="table-responsive small">
-    <table class="table table-striped table-sm table-bordered">
+<div class="overflow-x-auto">
+    <table class="table-auto min-w-full bg-white border border-gray-300">
         <thead>
             <tr>
-                <th scope="col">Judul</th>
-                <th scope="col">Isi</th>
-                <th scope="col">Gambar</th>
-                <th scope="col">Aksi</th>
+                <th class="py-2 px-4 border">Judul</th>
+                <th class="py-2 px-4 border">Isi</th>
+                <th class="py-2 px-4 border">Gambar</th>
+                <th class="py-2 px-4 border">Aksi</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($berita as $berita)
             <tr>
-                <td width="200">{{ $berita->judul }}</td>
-                <td>{{ $berita->isi }}</td>
-                <td>
-                    <img src="{{ asset('storage/gambar/' . $berita->gambar) }}" style="width: auto ; height:100px" alt="{{ $berita->judul }}">
-
-
+                <td class="py-2 px-4 border">{{ $berita->judul }}</td>
+                <td class="py-2 px-4 border">{{ $berita->isi }}</td>
+                <td class="py-2 px-4 border">
+                    <img src="{{ asset('storage/gambar/' . $berita->gambar) }}" class="w-auto h-20" alt="{{ $berita->judul }}">
                 </td>
-                <td width="100">
+                <td class="py-2 px-4 border">
                     {{-- <a href="{{ url('/dashboard/administrasi/' . $berita->id . '/edit') }}" class="badge bg-warning">
                         <i data-feather="edit"></i>
                     </a>
@@ -53,7 +51,6 @@
     </table>
 </div>
 
-
 {{-- <section>
     <div class="page-section text-black mb-3 mt-7" id="berita">
         <div class="container">
@@ -75,6 +72,5 @@
         </div>
     </div>
 </section> --}}
-
 
 @endsection

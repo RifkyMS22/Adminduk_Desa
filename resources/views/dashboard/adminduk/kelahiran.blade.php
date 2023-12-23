@@ -1,51 +1,54 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts-dashboard.app')
 
-@section('container')
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Kelahiran Anak Desa Palar</h1>
+@section('content')
+<div class="flex justify-between flex-wrap items-center pt-3 pb-2 mb-3 border-b">
+    <h1 class="text-2xl">Kelahiran Anak Desa Palar</h1>
 </div>
 <div class="btn-group">
-    <a href="{{ route('dashboard.adminduk.create_kelahiran') }}" class="btn btn-primary active"
-        aria-current="page">Tambah</a>
+    <a href="{{ route('dashboard.adminduk.create_kelahiran') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        Tambah
+    </a>
 </div>
-<div class="table-responsive small mt-4">
-    <table class="table table-striped table-bordered">
+
+<div class="mt-4">
+    <table class="table-auto w-full">
         <thead>
-            <tr>
-                <th scope="col">Nama Bayi</th>
-                <th scope="col">Nik Bayi</th>
-                <th scope="col">Warganegara Bayi</th>
-                <th scope="col">Tempat Di Lahirkan</th>
-                <th scope="col">Tempat Kelahiran</th>
-                <th scope="col">Tanggal</th>
-                <th scope="col">Pukul</th>
-                <th scope="col">Jenis Kelamin</th>
-                <th scope="col" class="text-center">Aksi</th>
+            <tr class="border-b">
+                <th class="px-4 py-2 border-r">Nama Bayi</th>
+                <th class="px-4 py-2 border-r">Nik Bayi</th>
+                <th class="px-4 py-2 border-r">Warganegara Bayi</th>
+                <th class="px-4 py-2 border-r">Tempat Di Lahirkan</th>
+                <th class="px-4 py-2 border-r">Tempat Kelahiran</th>
+                <th class="px-4 py-2 border-r">Tanggal</th>
+                <th class="px-4 py-2 border-r">Pukul</th>
+                <th class="px-4 py-2 border-r">Jenis Kelamin</th>
+                <th class="px-4 py-2 text-center">Aksi</th>
             </tr>
+            
         </thead>
         <tbody>
             @foreach($kelahiran as $kelahiran)
                 <tr>
-                    <td>{{ $kelahiran->nama_bayi }}</td>
-                    <td>{{ $kelahiran->nik_bayi }}</td>
-                    <td>{{ $kelahiran->warganegara_bayi }}</td>
-                    <td>{{ $kelahiran->tmpt_dilahirkan }}</td>
-                    <td>{{ $kelahiran->tmpt_kelahiran }}</td>
-                    <td>{{ $kelahiran->tgl_lahir }}</td>
-                    <td>{{ $kelahiran->jam }}</td>
-                    <td>{{ $kelahiran->jns_kelamin }}</td>
-                    <td width="100">
+                    <td class="px-4 py-2">{{ $kelahiran->nama_bayi }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->nik_bayi }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->warganegara_bayi }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->tmpt_dilahirkan }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->tmpt_kelahiran }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->tgl_lahir }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->jam }}</td>
+                    <td class="px-4 py-2">{{ $kelahiran->jns_kelamin }}</td>
+                    <td class="px-4 py-2 text-center">
                         <div class="btn-group" role="group">
                             <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id . '/edit') }}"
-                                class="btn btn-sm btn-warning">
+                                class="btn btn-warning">
                                 <i data-feather="edit"></i>
                             </a>
                             <a href="{{ url('/dashboard/adminduk/export/' . $kelahiran->id) }}"
-                                class="btn btn-primary btn-sm" target="_blank">
+                                class="btn btn-primary" target="_blank">
                                 <i data-feather="printer"></i>
                             </a>
                             <a href="{{ url('/dashboard/adminduk/' . $kelahiran->id) }}"
-                                class="btn btn-danger btn-sm"
+                                class="btn btn-danger"
                                 onclick="event.preventDefault(); document.getElementById('delete-form-{{ $kelahiran->id }}').submit();">
                                 <i data-feather="x-circle"></i>
                             </a>
@@ -59,10 +62,6 @@
                     </td>
                 </tr>
             @endforeach
-            <script>
-                feather.replace()
-
-            </script>
         </tbody>
     </table>
 </div>

@@ -10,10 +10,19 @@ use Dompdf\Dompdf;
 
 class DashboardPendudukController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $dataPenduduk = DataPenduduk::latest('updated_at')->paginate(5);
+        $query = $request->input('search');$dataPenduduk = DataPenduduk::where('nama', 'like', "%$query%")
+        ->latest('updated_at')
+        ->paginate(5);
+
         return view('dashboard.penduduk.index', ['dataPenduduk' => $dataPenduduk]);
+
+
+
+        
+        // $dataPenduduk = DataPenduduk::latest('updated_at')->paginate(5);
+        // return view('dashboard.penduduk.index', ['dataPenduduk' => $dataPenduduk]);
     }
 
 
