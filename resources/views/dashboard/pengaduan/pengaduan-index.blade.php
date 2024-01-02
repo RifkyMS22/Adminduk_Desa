@@ -1,6 +1,7 @@
 @extends('dashboard.layouts-dashboard.app')      
 
 @section('content')
+<div class="bg-white p-4 rounded-xl overflow-x-auto"> 
 <div class="container mx-auto">
     <h2 class="text-2xl font-bold mb-4">Daftar Pengaduan</h2>
 
@@ -34,6 +35,7 @@
             </table>
         </div>
     @endif
+</div>
 </div>
 <!-- Panggil setelah DOM selesai dimuat -->
 <script>

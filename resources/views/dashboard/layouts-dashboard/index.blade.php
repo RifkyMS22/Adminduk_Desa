@@ -1,6 +1,7 @@
 @extends('dashboard.layouts-dashboard.app')
 
 @section('content')
+<div class="h-screen bg-white p-4 rounded-xl overflow-x-auto"> 
 <h1 class="text-3xl text-black pb-6">Dashboard</h1>
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
     <!-- Kartu Data - Total Penduduk -->
@@ -46,7 +47,7 @@
     </div>
 
 </div>
-<div class="col-span-2 p-2 bg-yellow-200 rounded-md shadow-md mt-4 max-w-screen-md mx-auto">
+{{-- <div class="col-span-2 p-2 bg-yellow-200 rounded-md shadow-md mt-4 max-w-screen-md mx-auto">
     <h2 class="text-base font-semibold mb-2">Grafik Penduduk</h2>
         <!-- Kartu Data - Info Leads -->
         <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-4">
@@ -111,8 +112,8 @@
                 </div>
             </div>
         </div>
+</div> --}}
 </div>
-
 <script>
     window.addEventListener("load", function () {
         const options = {

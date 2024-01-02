@@ -20,18 +20,18 @@
                 <i class='fas fa-file-alt mr-3'></i>
                 Administrasi Kependudukan
             </a>
-            <a href="/" class="flex items-center {{ request()->is('admin/administrasi-kependudukan*') ? 'text-blue-500' : 'opacity-75 hover:opacity-100' }} py-4 pl-6 nav-item">
+            <a href="/" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item" @click="isOpen = false">
                 Home
             </a>
-            <a href="/dashboard/berita/index" class="flex items-center {{ request()->is('admin/administrasi-kependudukan*') ? 'text-blue-500' : 'opacity-75 hover:opacity-100' }} py-4 pl-6 nav-item">
+            <a href="/dashboard/berita/index" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item" @click="isOpen = false">
                 Berita
             </a>
-            <a href="/dashboard/pengaduan/index" class="flex items-center {{ request()->is('admin/administrasi-kependudukan*') ? 'text-blue-500' : 'opacity-75 hover:opacity-100' }} py-4 pl-6 nav-item">
+            <a href="/dashboard/pengaduan/index" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item" @click="isOpen = false">
                 Pengaduan
             </a>
-            <a href="/dashboard/informasi/index" class="flex items-center {{ request()->is('admin/administrasi-kependudukan*') ? 'text-blue-500' : 'opacity-75 hover:opacity-100' }} py-4 pl-6 nav-item">
+            <a href="/dashboard/informasi/index" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item" @click="isOpen = false">
                 Informasi
-            </a>
+            </a>            
         </nav>
     </div>
 </aside>
@@ -95,3 +95,4 @@
             </a>
         </nav>
     </header>
+    

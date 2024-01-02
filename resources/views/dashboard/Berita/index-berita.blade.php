@@ -1,15 +1,17 @@
 @extends('dashboard.layouts-dashboard.app')      
 
 @section('content')
-<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b">
-    <h1 class="text-2xl">Berita</h1>
-</div>
+<div class="bg-white p-4 rounded-xl">
+    <div class="container mx-auto">
+        <h2 class="text-2xl font-bold mb-4">Berita</h2>
+    </div>
 
-<div class="flex">
+<div class="flex mb-4">
     <a href="{{ route('dashboard.berita.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded inline-block">Tambah</a>
 </div>
 
-<div class="overflow-x-auto">
+<div class="bg-white p-4 rounded-xl overflow-x-auto"> 
+    <div class=" border-b border-gray-200 rounded-lg">
     <table class="table-auto min-w-full bg-white border border-gray-300">
         <thead>
             <tr>
@@ -49,6 +51,7 @@
             </script>
         </tbody>
     </table>
+</div>
 </div>
 
 {{-- <section>

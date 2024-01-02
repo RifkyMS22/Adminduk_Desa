@@ -127,8 +127,11 @@ Route::post('/dashboard/adminduk/create_kematian', [DashboardKematianController:
 //Route untuk Pindah
 Route::get('/dashboard/pindah/index', [DashboardPindahController::class, 'index'])->name('dashboard.pindah.index');
 Route::get('/dashboard/pindah/create', [DashboardPindahController::class, 'create'])->name('dashboard.pindah.create');
-Route::get('/dashboard/pindah/store', [DashboardPindahController::class, 'store'])->name('dashboard.pindah.store');
-
+Route::post('/dashboard/pindah/store', [DashboardPindahController::class, 'store'])->name('dashboard.pindah.store');
+Route::get('/dashboard/pindah/{id}/edit', [DashboardPindahController::class, 'edit'])->name('dashboard.pindah.edit');
+Route::put('/dashboad/pindah/update/{id}', [DashboardPindahController::class, 'update'])->name('dashboard.pindah.update');
+Route::delete('/dashboard/pindah/delete/{id}', [DashboardPindahController::class, 'destroy'])->name('dashboard.pindah.destroy');
+Route::get('/dashboard/pindah/export/{id}', [DashboardPindahController::class, 'export'])->name('dashboard.pindah.export');
 
 // Route untuk layanan
 Route::get('/layanan/index', [LayananController::class, 'index'])->name('layanan.index');
@@ -183,7 +186,7 @@ Route::get('/cetakbbm', function(){
     return view ('dashboard.administrasi.tampilan_bbm');
 });
 Route::get('/cetakdatang', function(){
-    return view ('dashboard.adminduk.tampilan_datang');
+    return view ('dashboard.adminduk.tampilan_pindah');
 });
 
 
