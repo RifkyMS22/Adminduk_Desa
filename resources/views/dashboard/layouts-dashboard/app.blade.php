@@ -157,6 +157,10 @@
                     class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                     Informasi
                 </a>
+                <a href="/dashboard/pengajuan/index"
+                    class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                    Pengajuan
+                </a>
             </nav>
         </aside>
    

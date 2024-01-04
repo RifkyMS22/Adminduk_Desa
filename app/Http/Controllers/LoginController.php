@@ -12,29 +12,25 @@ class LoginController extends Controller
         return view('halaman_login');
     }
 
-//     public function authenticate(Request $request)
-// {
-//     $credentials = $request->validate([
-//         'email' => 'required|email',
-//         'password' => 'required',
-//     ]);
+    public function authenticate(Request $request)
+    {
+        $request->validate([
+            'nik' => 'required|numeric|digits:16',
+            'password' => 'required|min:6',
+        ]);
 
-//     if (Auth::attempt($credentials)) {
-//         $request->session()->regenerate();
-    
-//         // Arahkan admin ke halaman dashboard
-//         if (Auth::user()->role === 'admin') {
-//             return redirect()->route('dashboard.index');
-//         }
-    
-//         return redirect()->intended('/');
-//     }
+        $credentials = $request->only('nik', 'password');
 
-//     return back()->withErrors([
-//         'email' => 'The provided credentials do not match our records.',
-//     ]);
-// }
+        if (Auth::attempt($credentials)) {
+            // Jika otentikasi berhasil
+            return redirect('/dashboard')->with('success', 'Login berhasil!');
+        }
 
+        // Jika otentikasi gagal
+        return back()->withErrors([
+            'nik' => 'NIK atau kata sandi salah.',
+        ]);
+    }
 
 
     public function logout(Request $request)
@@ -47,5 +43,4 @@ class LoginController extends Controller
 
         return redirect('/');
     }
-}
-
+} 

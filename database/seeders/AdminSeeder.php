@@ -19,6 +19,7 @@ class AdminSeeder extends Seeder
         // Create admin account
         User::create([
             'name' => 'Admin Palar',
+            'nik' => '1234567812345678',
             'email' => 'admin@google.com',
             'password' => Hash::make('adminpalar'), // Ganti dengan password yang aman
             'role' => 'admin',

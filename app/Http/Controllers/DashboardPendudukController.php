@@ -14,7 +14,7 @@ class DashboardPendudukController extends Controller
     {
         $query = $request->input('search');$dataPenduduk = DataPenduduk::where('nama', 'like', "%$query%")
         ->latest('updated_at')
-        ->paginate(5);
+        ->paginate(25);
 
         return view('dashboard.penduduk.index', ['dataPenduduk' => $dataPenduduk]);
 

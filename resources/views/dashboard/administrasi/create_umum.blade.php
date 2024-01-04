@@ -1,13 +1,16 @@
 @extends('dashboard.layouts-dashboard.app')
 
 @section('content')
-<div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b">
-    <h1 class="text-2xl font-bold">Surat Keterangan Umum</h1>
+<div class="mx-auto">
+    <div class="flex justify-between items-center pt-3 pb-2 mb-3 border-b border-gray-200">
+    <h1 class="text-2xl font-semibold">Surat Keterangan Umum</h1>
 </div>
-
+</div>
 <div class="container mx-auto">
     <div class="flex justify-center">
-        <div class="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 bg-white p-6 rounded-md shadow-md">
+        <div class="w-full lg:w-1/2">
+            <div class="bg-white p-6 rounded-md shadow-md">
+            <h2 class="text-3xl font-bold text-center mb-4">Create Keterangan Umum</h2>
             <form method="POST" action="{{ route('dashboard.keteranganumum.store') }}">
                 @csrf
 
@@ -91,6 +94,7 @@
                     <a href="{{ route('dashboard.keteranganumum.index') }}" class="bg-gray-400 text-white p-2 rounded-md">Kembali</a>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </div>

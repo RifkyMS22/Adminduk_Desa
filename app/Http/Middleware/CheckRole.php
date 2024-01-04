@@ -20,8 +20,13 @@ class CheckRole
                     return $next($request);
                 }
             }
+
+            // Jika pengguna tidak memiliki peran yang diizinkan
+            return redirect('/')->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
 
-        return redirect('/'); // Redirect to home if role check fails
+        // Jika pengguna belum login
+        return redirect()->route('halaman.login')->with('error', 'Anda harus login terlebih dahulu.');
+    
     }
 }

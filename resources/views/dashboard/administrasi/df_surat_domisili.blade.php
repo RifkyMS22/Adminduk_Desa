@@ -48,7 +48,7 @@
                 <td class="py-2 px-4 border-b">
                     <form action="{{ url('/dashboard/administrasi/' . $domisili->id . '/edit') }}" method="GET" class="inline">
                         <button type="submit" class="btn btn-warning">
-                            <i data-feather="edit"></i>
+                            <i data-feather="edit" class="inline-block">></i>
                         </button>
                     </form>
                 
@@ -56,13 +56,13 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">
-                            <i data-feather="x-circle"></i>
+                            <i data-feather="x-circle" class="inline-block">></i>
                         </button>
                     </form>
                 
                     <form action="{{ url('/dashboard/administrasi/domisili/export/' . $domisili->id) }}" method="GET" class="inline" target="_blank">
                         <button type="submit" class="btn btn-primary">
-                            <i data-feather="printer"></i>
+                            <i data-feather="printer" class="inline-block"></i>
                         </button>
                     </form>
                 

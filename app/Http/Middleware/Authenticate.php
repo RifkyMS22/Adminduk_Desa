@@ -28,11 +28,11 @@ class Authenticate extends Middleware
                 return route('home.berita');
                 break;
             default:
-                return route('login');
+                return route('halaman.login');
         }
     }
 
-    return route('login');
+    return route('halaman.login');
 }
 
 }

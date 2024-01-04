@@ -22,6 +22,7 @@ use App\Http\Controllers\DashboardPendudukController;
 use App\Http\Controllers\DashboardInformasiController;
 use App\Http\Controllers\DashboardKelahiranController;
 use App\Http\Controllers\DashboardPengaduanController;
+use App\Http\Controllers\DashboardPengajuanController;
 
 
 
@@ -46,7 +47,13 @@ Route::middleware(['role:admin'])->group(function () {
     //Route Untuk Dashboard
     Route::get('/dashboard-index', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/chart', 'DashboardController@showChart');
+    
 
+});
+
+Route::middleware(['role:user'])->group(function () {
+
+    Route::get('/layanan/riwayat-pengajuan', [LayananController::class, 'riwayatPengajuan'])->name('layanann.riwayat.pengajuan');
 });
 
 //Route untuk Home
@@ -135,6 +142,12 @@ Route::get('/dashboard/pindah/export/{id}', [DashboardPindahController::class, '
 
 // Route untuk layanan
 Route::get('/layanan/index', [LayananController::class, 'index'])->name('layanan.index');
+Route::get('/layanan/pengajuan-index', [LayananController::class, 'pengajuan'])->name('layanan.pengajuan.index');
+
+// Route::get('/layanann/riwayat-pengajuan', [LayanannController::class, 'riwayatPengajuan'])->name('layanann.riwayatPengajuan');
+
+Route::post('/layanan/store', [LayananController::class, 'store'])->name('layanan.pengajuan.store');
+Route::put('/layanan/update/{id}', [LayananController::class, 'update'])->name('layanan.pengajuan.update');
 
 Route::get('layanan/umum-index', [LayananController::class, 'umum'])->name('layanan.umum.index');
 Route::get('layanan/domisili-index', [LayananController::class, 'domisili'])->name('layanan.domisili.index');
@@ -145,28 +158,26 @@ Route::get('layanan/kematian-index', [LayananController::class, 'kematian'])->na
 Route::get('layanan/pindah-index', [LayananController::class, 'pindah'])->name('layanan.pindah.index');
 Route::get('layanan/datang-index', [LayananController::class, 'datang'])->name('layanan.datang.index');
 
+//Route pengajuan
+Route::get('/dashboard/pengajuan/index', [DashboardPengajuanController::class, 'index'])->name('dashbaord.pengajuan.index');
+Route::patch('/pengajuan/update-status/{id}', [DashboardPengajuanController::class, 'updateStatus'])->name('dashboard.pengajuan.updateStatus');
+
 // ROute untuk berita dashboard
 Route::get('/dashboard/berita/index', [DashboardBeritaController::class, 'index'])->name('dashboard.berita.index');
 Route::get('/dashboard/berita/create', [DashboardBeritaController::class, 'create'])->name('dashboard.berita.create');
 Route::post('/dashboard/berita/store', [DashboardBeritaController::class, 'store'])->name('dashboard.berita.store');
 
 
+
 //Route untuk login
 Route::get('/halaman_login', [LoginController::class, 'index'])->name('halaman.login');
-Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 //Route untuk logout
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 
 //ROute untuk Registrasi
 Route::get('/registrasi', [RegistrasiController::class, 'index'])->name('registrasi.index');
 Route::post('/registrasi', [RegistrasiController::class, 'store'])->name('registrasi.store');
-// Route::post('/registrasi', [RegistrasiController::class, 'store']);
-
-
-
-Route::get('/chat', [ChatController::class, 'index']);
-Route::post('/send-message', [ChatController::class, 'sendMessage']);
-Route::post('/upload-file', [ChatController::class, 'uploadFile']);
 
 
 

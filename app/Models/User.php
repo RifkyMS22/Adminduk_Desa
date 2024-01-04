@@ -21,6 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'nik',
         'email',
         'password',
         'role', // Tambahkan kolom 'role' di sini
@@ -54,7 +55,16 @@ class User extends Authenticatable
         // Assuming you have an 'role' column in your users table
         return $this->role === 'admin';
     }
+    public function isUser()
+    {
+        // Assuming you have an 'role' column in your users table
+        return $this->role === 'user';
+    }
     
+    public function pengajuan()
+{
+    return $this->hasMany(Pengajuan::class, 'user_id');
+}
     
     
 }
